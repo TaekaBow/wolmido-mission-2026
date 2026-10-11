@@ -11,7 +11,7 @@
   <meta property="og:title" content="월요일에 우리, 월미도! | 팀별 미션지">
   <meta property="og:description" content="우리 팀의 코스·선택 미션·집결 장소와 시간을 한눈에 확인하세요.">
   <!-- 배포 주소를 알게 되면 og:image를 절대 URL로 변경하면 카카오톡 미리보기가 더욱 안정적입니다. -->
-  <meta property="og:image" content="assets/kakao-preview.png">
+  <meta property="og:image" content="https://taekabow.github.io/wolmido-mission-2026/assets/kakao-preview.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <title>월요일에 우리, 월미도! · 모바일 미션지</title>
@@ -30,7 +30,7 @@
     .timegrid small{display:block;font-size:10px;color:#a8c9cb;margin-bottom:5px}.timegrid strong{font-size:18px;letter-spacing:-.02em}
     main{padding:0 18px 18px}.section{margin-top:24px}.section-heading{display:flex;gap:9px;justify-content:space-between;align-items:baseline;margin-bottom:12px}.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--sea);font-weight:850}.section-heading h2{font-size:19px;letter-spacing:-.035em;margin:2px 0;font-weight:850}.hint{font-size:12px;line-height:1.5;color:var(--muted)}
     .notice{border:1px solid #ead5c0;border-radius:16px;padding:14px 15px;background:#fff7ed;box-shadow:0 2px 5px #00000005}.notice strong{color:#8e480e}.notice p{margin:5px 0 0;font-size:13px;line-height:1.65}.notice.emergency{border-color:#dca484;background:#fff1e5}.notice .hintline{margin-top:9px;color:#7c6153}
-    .location{margin-top:11px;border-radius:14px;border:1px solid #e7e4da;background:#fff;padding:13px 14px;display:flex;gap:9px;align-items:flex-start}.location span{font-size:19px}.location p{margin:2px 0 0;color:#596770;font-size:13px;line-height:1.6}.location strong{font-size:13px}
+    .location{margin-top:11px;border-radius:14px;border:1px solid #e7e4da;background:#fff;padding:13px 14px;display:flex;gap:9px;align-items:flex-start}.location span{font-size:19px}.location p{margin:2px 0 0;color:#596770;font-size:13px;line-height:1.6}.location strong{font-size:13px}.maplink{display:inline-flex;align-items:center;gap:5px;margin-top:9px;padding:9px 12px;border:1px solid #b4d7d2;border-radius:10px;color:#11696a;background:#eaf7f2;font-size:12px;font-weight:800;text-decoration:none}.maplink:hover{background:#d4eee6}.navarrival{margin-top:15px;border-radius:14px;padding:14px;background:#fff9e7;border:1px solid #f0d79b}.navarrival strong{color:#6b4b16;font-size:14px}.navarrival p{margin:5px 0;color:#756851;font-size:12px}.navarrival .maplink{background:#166d72;color:#fff;border-color:#166d72}.routehero .maplink{margin-top:12px}
     .routes{display:grid;grid-template-columns:1fr 1fr;gap:10px}.routeBtn{border:1.5px solid #e3e1d9;border-radius:17px;background:#fff;text-align:left;padding:15px 12px;min-height:115px;box-shadow:0 3px 8px #141e2306}.routeBtn.active{border-color:var(--sea);background:#e8f5f2}.routeBtn .num{display:block;color:var(--orange);font-size:12px;font-weight:850;margin-bottom:9px}.routeBtn strong{display:block;font-weight:830;letter-spacing:-.045em;font-size:15px}.routeBtn small{display:block;margin-top:6px;color:var(--muted);font-size:11px;line-height:1.35}
     .routehero{position:relative;border-radius:20px;padding:19px;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line)}.routekicker{font-size:12px;font-weight:800;color:var(--orange)}.routehero h2{font-size:25px;line-height:1.25;letter-spacing:-.05em;margin:6px 0}.routehero p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}.routepath{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:15px}.pathstep{background:#f3f4f2;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:680}.arrow{font-size:11px;color:#a7abb0}
     .progress-card{display:flex;align-items:center;gap:15px;justify-content:space-between;background:#d9efe9;border:1px solid #c1e0d9;border-radius:17px;padding:17px 16px;margin-top:12px}.progress-card strong{font-size:15px}.progress-card p{margin:4px 0 0;font-size:12px;color:#426366;line-height:1.4}.count{font-size:28px;color:#1e666e;font-weight:850;min-width:70px;text-align:right}.count span{font-size:15px;color:#789998}.lineprogress{height:7px;border-radius:10px;background:#bcd8d2;overflow:hidden;margin-top:9px}.lineprogress>b{height:100%;display:block;background:var(--sea);border-radius:10px;width:0;transition:width .25s ease}
@@ -60,17 +60,18 @@
   </header>
   <main>
     <section class="section" id="todaySection">
-      <div class="notice emergency" id="announcementBox"><strong>오늘의 안내</strong><p id="announcement">준비 중입니다.</p></div>
-      <div class="location"><span aria-hidden="true">📍</span><div><strong>첫 집결 장소</strong><p id="meetingPlace"></p></div></div>
-      <div class="location"><span aria-hidden="true">⏱</span><div><strong>중간 집결 장소 · <span id="checkpointInlineTime">16:30</span></strong><p id="checkpointPlace"></p></div></div>
-      <div class="location"><span aria-hidden="true">🍽</span><div><strong><span id="dinnerInlineTime">17:30</span> 전원 착석</strong><p id="dinnerPlace"></p></div></div>
+      <div class="navarrival"><strong>차량 내비게이션 도착지 · <span id="navigationName"></span></strong><p id="navigationAddress"></p><a class="maplink" id="navigationMap" target="_blank" rel="noopener noreferrer" href="#">카카오맵에서 도착지 보기 ↗</a></div>
+      <div class="notice emergency" id="announcementBox" style="margin-top:12px"><strong>오늘의 안내</strong><p id="announcement">준비 중입니다.</p></div>
+      <div class="location"><span aria-hidden="true">📍</span><div><strong>첫 집결 장소</strong><p id="meetingPlace"></p><a class="maplink" id="meetingMap" target="_blank" rel="noopener noreferrer" href="#">첫 집결지 지도 ↗</a></div></div>
+      <div class="location"><span aria-hidden="true">⏱</span><div><strong>중간 집결 장소 · <span id="checkpointInlineTime">16:30</span></strong><p id="checkpointPlace"></p><a class="maplink" id="checkpointMap" target="_blank" rel="noopener noreferrer" href="#">학무대 지도 ↗</a></div></div>
+      <div class="location"><span aria-hidden="true">🍽</span><div><strong><span id="dinnerInlineTime">17:30</span> 전원 착석</strong><p id="dinnerPlace"></p><a class="maplink" id="dinnerMap" target="_blank" rel="noopener noreferrer" href="#">달빛조개 지도 ↗</a></div></div>
     </section>
     <section class="section" id="routesSection">
       <div class="section-heading"><div><div class="eyebrow">01 · COURSE</div><h2>우리 팀 코스 선택</h2></div><span class="hint">추첨 결과에 따라 선택</span></div>
       <div class="routes" id="routeButtons"></div>
     </section>
     <section class="section" id="introSection">
-      <div class="notice"><strong>공통 출발 동선</strong><p id="assemblyRoute"></p></div>
+      <div class="notice"><strong>공통 상행 동선</strong><p id="assemblyRoute"></p><div class="actions"><a class="maplink" id="assemblyStartMap" target="_blank" rel="noopener noreferrer" href="#">석양마루매점 출발점 ↗</a><a class="maplink" id="viewpointMap" target="_blank" rel="noopener noreferrer" href="#">월미공원전망대 도착점 ↗</a></div></div>
     </section>
     <section class="section" id="commonSection">
       <div class="section-heading"><div><div class="eyebrow">02 · TEAM MEMORY</div><h2>공통 미션 · 우리 팀의 기록</h2></div><span class="hint" id="commonCountHint">3개 모두 · 30점</span></div>
@@ -123,6 +124,8 @@ function start(){
   text('lastUpdated',c.updatedAt?'· 안내 갱신 '+c.updatedAt:'');
   text('announcement',e.announcement);$('announcementBox').classList.toggle('hidden',!e.announcement);
   text('meetingPlace',e.meetingPlace);text('checkpointPlace',e.checkpointPlace);text('dinnerPlace',e.dinnerPlace);
+   text('navigationName',e.navigationName||'국립인천해양박물관');text('navigationAddress',e.navigationAddress||'인천 제물포구 월미로 294');
+   for(const [id,url] of Object.entries({navigationMap:e.navigationMapUrl,meetingMap:e.meetingMapUrl,checkpointMap:e.checkpointMapUrl,dinnerMap:e.dinnerMapUrl,assemblyStartMap:e.assemblyStartMapUrl,viewpointMap:e.viewpointMapUrl})){$(id).href=validUrl(url||e.kakaoMapUrl||'https://map.kakao.com');}
   text('checkpointInlineTime',e.checkpointTime);text('dinnerInlineTime',e.dinnerTime);text('assemblyRoute',e.assemblyRoute);
   text('checkpointNoticeTitle',e.checkpointTime+' · '+e.checkpointPlace);
   text('checkpointNotice',e.eventFlow||'중간 집결 후 경쟁전을 진행합니다.');text('submissionNotice',e.photoSubmission+' '+e.contactMessage);
@@ -141,7 +144,7 @@ function render(){
   $('routeButtons').querySelectorAll('[data-course]').forEach(x=>x.addEventListener('click',()=>{selectRoute(Number(x.dataset.course));$('missionSection').scrollIntoView({behavior:'smooth'});}));
   if(!route){$('routeDetail').innerHTML=`<div class="notice"><strong>코스를 먼저 선택하세요</strong><p>배정된 코스를 누르면 관광 안내와 미션 ${count()}개 선택 기록이 표시됩니다. 선택 기록은 이 휴대폰에서만 보관됩니다.</p></div>`;$('progressArea').innerHTML='';$('missions').innerHTML='';$('missionActions').classList.add('hidden');return;}
   const d=cfg.routes[route];text('missionCountHint',d.missions.length+'개 중 '+count()+'개 선택');
-  $('routeDetail').innerHTML=`<div class="routehero"><div class="routekicker">COURSE ${String(route).padStart(2,'0')} · ${d.missions.length} MISSIONS</div><h2>${html(d.name)}</h2><p>${html(d.desc)}</p><div class="routepath">${(d.path||[]).map((p,i)=>`${i?'<span class="arrow">›</span>':''}<span class="pathstep">${html(p)}</span>`).join('')}</div></div>`;
+  $('routeDetail').innerHTML=`<div class="routehero"><div class="routekicker">COURSE ${String(route).padStart(2,'0')} · ${d.missions.length} MISSIONS</div><h2>${html(d.name)}</h2><p>${html(d.desc)}</p><a class="maplink" href="${html(validUrl(d.mapUrl||cfg.event.kakaoMapUrl))}" target="_blank" rel="noopener noreferrer">이 코스 대표 목적지 카카오맵 ↗</a><div class="routepath">${(d.path||[]).map((p,i)=>`${i?'<span class="arrow">›</span>':''}<span class="pathstep">${html(p)}</span>`).join('')}</div></div>`;
   $('missionActions').classList.remove('hidden');renderMissions();
 }
 function selectRoute(n){route=n;const url=new URL(location.href);url.searchParams.set('course',String(n));history.replaceState({},'',url);render();}
