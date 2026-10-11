@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
-  "version": "2.1",
-  "updatedAt": "2026-10-12 08:25",
+  "version": "2.2",
+  "updatedAt": "2026-10-12 08:40",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -13,13 +13,21 @@ window.WOLMI_CONFIG = {
     "checkpointPlace": "월미짱랜드/월미테마파크 앞 학무대",
     "dinnerLabel": "전원 착석",
     "dinnerTime": "17:30",
-    "dinnerPlace": "회식 장소: 운영진 공지 확인",
-    "assemblyRoute": "제2주차장 → 한국이민사박물관 앞 → 박물관길 → 월미둘레길(평화의 어머니 나무) → 전망대길(데크계단) → 월미전망대 전체 기념사진 → 코스별 출발",
+    "dinnerPlace": "달빛조개",
+    "assemblyRoute": "석양마루매점(인천 제물포구 월미로 329) → 돈대삼거리 → 월미산둘레길(남측) → 전망대길(데크계단) → 월미공원전망대",
     "announcement": "16:30까지 학무대에서 중간 집결합니다. 안전과 복귀 시간이 미션보다 우선입니다.",
     "eventFlow": "전망대 이후 팀별 탐방 → 학무대 간식 보급 및 게임 선수 선발 → 짱랜드 오락실 경기 → 17:30 식당 착석",
     "kakaoMapUrl": "https://kko.to/3eZNrnEfUp",
     "photoSubmission": "공통 미션 3개와 선택한 코스 미션의 사진·영상은 지정된 카카오톡 단체 채팅방에 제출해 주세요.",
-    "contactMessage": "긴급 상황은 팀 리더 또는 운영진에게 바로 연락해 주세요."
+    "contactMessage": "긴급 상황은 팀 리더 또는 운영진에게 바로 연락해 주세요.",
+    "navigationName": "국립인천해양박물관",
+    "navigationAddress": "인천 제물포구 월미로 294",
+    "navigationMapUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80",
+    "meetingMapUrl": "https://map.kakao.com/link/search/%ED%95%9C%EA%B5%AD%EC%9D%B4%EB%AF%BC%EC%82%AC%EB%B0%95%EB%AC%BC%EA%B4%80",
+    "viewpointMapUrl": "https://place.map.kakao.com/17811732",
+    "checkpointMapUrl": "https://place.map.kakao.com/592954764",
+    "dinnerMapUrl": "https://place.map.kakao.com/45078266",
+    "operationsNote": "현장 운영팀(잠정): 공경록 Unit장, 홍기택, 한승민 (3명)"
   },
   "requiredMissions": 3,
   "missionPoints": 10,
@@ -105,7 +113,8 @@ window.WOLMI_CONFIG = {
           "사슴원에 도착해 사슴 또는 사슴원 안내 표지를 배경으로 인증하세요.",
           "사슴에게 먹이를 주거나 울타리에 가까이 가지 마세요."
         ]
-      ]
+      ],
+      "mapUrl": "https://place.map.kakao.com/17408866"
     },
     "2": {
       "name": "월미산 한 바퀴",
@@ -171,7 +180,8 @@ window.WOLMI_CONFIG = {
           "그날을 기억하는 나무를 찾아 나무 또는 안내 표지를 배경으로 사진을 남기세요.",
           "육조삼거리~만남의 광장 부근 경유 시 탐색하세요."
         ]
-      ]
+      ],
+      "mapUrl": "https://place.map.kakao.com/17556404"
     },
     "3": {
       "name": "월미도 바다여행",
@@ -236,7 +246,8 @@ window.WOLMI_CONFIG = {
           "음악분수 또는 친수공간을 찾아 팀원들이 악단처럼 연출하세요.",
           "분수의 가동 여부와 무관하게 인증할 수 있습니다."
         ]
-      ]
+      ],
+      "mapUrl": "https://place.map.kakao.com/17805923"
     },
     "4": {
       "name": "등대와 숨은 풍경",
@@ -301,15 +312,16 @@ window.WOLMI_CONFIG = {
           "갈매기·게·물고기 등 바다 생물의 실물, 조형물 또는 그림을 찾아 함께 촬영하세요.",
           "가리키거나 손에 올리는 연출은 서로 다른 3명의 손만 나와도 인정. 야생동물 접근·먹이 주기 금지."
         ]
-      ]
+      ],
+      "mapUrl": "https://place.map.kakao.com/1550030810"
     }
   },
   "commonMissions": [
     {
-      "title": "우리 팀, 영화 한 편",
-      "format": "단체사진 1장 + 영화 제목",
-      "description": "코스를 걷다가 마음에 드는 풍경을 골라 팀원 전원이 영화 포스터 속 주인공처럼 한 장면을 연출해 보세요. 우리 팀만의 영화 제목도 붙여 주세요.",
-      "tip": "전망대에서 찍는 전체 기념사진과는 별도로 촬영합니다. 가급적 팀 전원이 한 장에 나오도록 하고, 촬영자를 바꾼 두 장까지 인정합니다."
+      "title": "가장 회사 워크샵 답지 않은 사진",
+      "format": "사진 1장 + 한 줄 제목",
+      "description": "오늘이 회사 워크숍이라는 사실을 잠시 잊고, 가장 워크숍 같지 않은 한 장면을 자유롭게 찍어 보세요. 풍경·표정·몸짓·우연한 순간까지 무엇이든 좋습니다. 사진에 재치 있는 제목 한 줄을 붙여 주세요.",
+      "tip": "정해진 포즈나 촬영 장소는 없습니다. 인증사진 기본 규칙에 따라 팀원 최소 3명이 등장하고, 넓은 장면에서는 가급적 전원이 함께하면 좋습니다. 위험한 장면 연출은 제외합니다."
     },
     {
       "title": "월미도 별별상",
