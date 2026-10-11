@@ -53,11 +53,13 @@ function make(){
  const e=draft.event;
  $('basicFields').innerHTML=[field('행사 제목','event.title',e.title),field('행사 날짜 표시','event.dateLabel',e.dateLabel),field('짧은 소개 문구','event.subtitle',e.subtitle,{wide:true,rows:2})].join('');
  $('timeFields').innerHTML=[
-   field('첫 집결 시간','event.meetingTime',e.meetingTime),field('첫 집결 장소','event.meetingPlace',e.meetingPlace,{rows:2}),
-   field('중간 집결 시간','event.checkpointTime',e.checkpointTime),field('중간 집결 장소','event.checkpointPlace',e.checkpointPlace,{rows:2}),
-   field('회식 착석 시간','event.dinnerTime',e.dinnerTime),field('회식 장소','event.dinnerPlace',e.dinnerPlace,{rows:2}),
+   field('차량 내비 도착지','event.navigationName',e.navigationName),field('내비 도착지 주소','event.navigationAddress',e.navigationAddress),field('내비 카카오맵 링크','event.navigationMapUrl',e.navigationMapUrl,{wide:true}),
+   field('첫 집결 시간','event.meetingTime',e.meetingTime),field('첫 집결 장소','event.meetingPlace',e.meetingPlace,{rows:2}),field('첫 집결지 카카오맵','event.meetingMapUrl',e.meetingMapUrl,{wide:true}),
+   field('중간 집결 시간','event.checkpointTime',e.checkpointTime),field('중간 집결 장소','event.checkpointPlace',e.checkpointPlace,{rows:2}),field('학무대 카카오맵','event.checkpointMapUrl',e.checkpointMapUrl,{wide:true}),
+   field('회식 착석 시간','event.dinnerTime',e.dinnerTime),field('회식 장소','event.dinnerPlace',e.dinnerPlace,{rows:2}),field('회식 장소 카카오맵','event.dinnerMapUrl',e.dinnerMapUrl,{wide:true}),
    field('가장 위에 띄울 공지','event.announcement',e.announcement,{rows:3,wide:true}),
    field('공통 출발 동선','event.assemblyRoute',e.assemblyRoute,{rows:3,wide:true}),
+   field('상행 출발점 카카오맵','event.assemblyStartMapUrl',e.assemblyStartMapUrl,{wide:true}),field('전망대 카카오맵','event.viewpointMapUrl',e.viewpointMapUrl,{wide:true}),
    field('행사 흐름 안내','event.eventFlow',e.eventFlow,{rows:2,wide:true})
  ].join('');
  $('missionSettings').innerHTML=[field('필수 미션 개수 (1~7)','requiredMissions',draft.requiredMissions,{type:'number',min:1,max:7}),field('성공한 미션 1개당 점수','missionPoints',draft.missionPoints,{type:'number',min:1,max:30})].join('');
@@ -82,6 +84,7 @@ function makeRoutes(){
    field('코스 이름','routes.'+active+'.name',r.name),
    field('코스 한 줄 소개','routes.'+active+'.lead',r.lead),
    field('자세한 소개','routes.'+active+'.desc',r.desc,{rows:3,wide:true}),
+   field('코스 대표 목적지 카카오맵','routes.'+active+'.mapUrl',r.mapUrl||'',{wide:true}),
    `<label class="field wide"><span>경유지 (한 줄에 하나씩)</span><textarea rows="4" data-route-path="${active}">${escapeHtml(r.path.join('\n'))}</textarea></label>`
  ].join('')+'</div>';
  $('missionEditors').innerHTML=r.missions.map((m,i)=>`<section class="mission"><h3>${active}코스 · ${i+1}번 미션 <small>${i<4?'길에서 만나는 장소':'찾아보기'}</small></h3><div class="fields">
