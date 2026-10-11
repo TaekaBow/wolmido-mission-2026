@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#123b48">
+<meta name="robots" content="noindex,nofollow">
+<title>운영진 편집실 · 월요일에 우리, 월미도!</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#243844;background:#eef2f0;--ink:#243844;--sea:#0f737b;--muted:#64747b;--border:#dce5e0}
+*{box-sizing:border-box}body{margin:0}button,input,textarea,select{font:inherit}button{cursor:pointer}a{color:#116d79}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #4facaf;outline-offset:2px}
+.wrap{max-width:970px;margin:0 auto;padding-bottom:115px}.head{padding:28px 22px;color:#fff;background:#123b48}.head small{color:#9ed2ce;letter-spacing:.1em;font-weight:800}.head h1{margin:9px 0;font-size:29px;letter-spacing:-.05em}.head p{font-size:14px;line-height:1.7;color:#c6d8d8;margin:0}.columns{display:grid;grid-template-columns:minmax(0,1fr);gap:18px;margin:20px 15px}.card{border-radius:19px;border:1px solid #dde6e1;padding:20px;background:#fff;box-shadow:0 8px 26px #142b3110}.card h2{margin:0 0 10px;font-size:21px}.card p{line-height:1.7;font-size:13px;color:var(--muted)}.notice{padding:13px;border:1px solid #e3cead;background:#fff7e9;border-radius:12px;font-size:13px;line-height:1.75;color:#624d30}.good{border-color:#b4dccc;background:#eaf7f2;color:#205f50}
+.fields{display:grid;grid-template-columns:1fr;gap:14px}.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:block;min-width:0}.field>span{display:block;color:#526772;font-weight:760;font-size:12px;margin:0 0 6px}.field input,.field textarea,.field select{width:100%;border:1px solid #cbd8d4;background:#fff;border-radius:10px;padding:11px 12px;font-size:14px;color:#1c323c}.field textarea{resize:vertical;min-height:74px;line-height:1.5}.field input:focus,.field textarea:focus,.field select:focus{border-color:#21898b}.muted{color:#6b7d83;font-size:12px;line-height:1.6;margin-top:6px}.line{height:1px;background:#e7eae7;margin:20px 0}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:16px 0}.tabs button{border-radius:11px;background:#f1f4f2;border:1px solid #dce3e0;padding:11px 5px;color:#527077;font-size:12px;font-weight:800}.tabs button.selected{background:#0f737b;color:#fff;border-color:#0f737b}
+.mission{padding:17px 14px;border:1px solid #dce7e1;background:#fafcfb;border-radius:14px;margin:12px 0}.mission h3{font-size:15px;margin:0 0 12px;letter-spacing:-.035em}.mission small{color:#73837d;font-weight:550}.buttons{display:flex;gap:9px;flex-wrap:wrap}.btn{border:1px solid #c7d7d1;border-radius:12px;padding:12px 15px;font-size:13px;font-weight:800;background:#fff;min-height:45px}.btn.primary{border-color:#126d77;background:#126d77;color:#fff}.btn.ghost{background:#edf6f3;color:#136e69}.btn:disabled{opacity:.5;cursor:not-allowed}.bottom{position:sticky;bottom:0;background:#fffffff2;backdrop-filter:blur(12px);border-top:1px solid #d6e2dd;padding:13px 17px calc(13px + env(safe-area-inset-bottom));display:flex;justify-content:center;gap:10px;box-shadow:0 -5px 20px #223b3412}.bottom button{flex:1;max-width:320px}.bottom .btn{min-height:51px}.status{padding:12px;border-radius:12px;background:#ecf7f1;color:#1c6451;font-size:13px;display:none;line-height:1.65;margin:8px 0 16px}.status.error{background:#fff0e9;color:#993f1a}.status.show{display:block}.fileInput{display:none}
+@media(min-width:750px){.columns{margin:22px 24px}.head{padding:33px 37px}.head h1{font-size:35px}.fields{grid-template-columns:1fr 1fr}.wide{grid-column:1/-1}.two{grid-template-columns:1fr 1fr}}
+@media(max-width:360px){.two{grid-template-columns:1fr}.tabs{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="head"><small>WOLMIDO · ADMIN EDITOR</small><h1>행사 안내 편집실</h1><p>집결 시간·장소, 필수 미션 개수, 코스 및 28개 미션의 문구를 한글 입력칸에서 수정합니다.</p></header>
+<div class="columns">
+<section class="card">
+  <div class="notice"><strong>이 화면만으로는 홈페이지가 바뀌지 않습니다.</strong><br>내용을 수정한 뒤 <b>설정 코드 복사 → GitHub 편집기에 붙여넣기 → 변경사항 커밋</b>해야 같은 공개 주소에 반영됩니다. GitHub 로그인 권한이 있는 사람만 실제 게시할 수 있습니다. 편집 과정에서 비밀번호나 토큰은 필요하지 않습니다.</div>
+  <p id="loadedInfo">현재 공개된 행사 설정을 불러오는 중입니다.</p><div class="status" id="status" role="status" aria-live="polite"></div>
+  <div class="buttons"><button class="btn" type="button" id="restoreDraft">임시 수정본 복원</button><button class="btn" type="button" id="resetLive">현재 공개 설정 다시 불러오기</button></div>
+</section>
+<section class="card"><h2>1. 행사 기본 정보</h2><div class="fields" id="basicFields"></div></section>
+<section class="card"><h2>2. 시간 · 장소 · 공지</h2><div class="fields" id="timeFields"></div></section>
+<section class="card"><h2>3. 미션 선택 기준</h2><div class="two" id="missionSettings"></div><p>필수 개수를 바꾸면 사이트의 선택 버튼·진행률·공유 문구에 즉시 적용됩니다. <strong>실무 운영시트의 미션 배점도 함께 확인</strong>하세요.</p></section>
+<section class="card"><h2>4. 코스별 미션 수정</h2><p>각 코스마다 길에서 만나는 명소 4개와 찾아보는 명소 3개가 준비되어 있습니다. 미션 제목, 장소, 설명과 유의사항을 자유롭게 수정할 수 있습니다.</p><div class="tabs" id="routeTabs"></div><div id="routeInfo"></div><div id="missionEditors"></div></section>
+<section class="card"><h2>5. 공통 규칙 · 지도 링크</h2><div class="fields" id="extraFields"></div><h3 style="font-size:15px;margin:22px 0 10px">공통 인증 규칙</h3><div id="ruleEditors"></div></section>
+<section class="card" id="publishSection"><h2>6. GitHub에 반영하기</h2>
+  <div class="notice good">사이트 주소는 바꾸지 않습니다. <strong>settings.js 한 파일만 수정</strong>하면 미션지의 내용이 갱신됩니다.</div>
+  <div class="two" style="margin-top:16px"><label class="field"><span>GitHub 저장소 (계정명/저장소명)</span><input id="repo" placeholder="예: myname/wolmido-mission" autocomplete="off"></label><label class="field"><span>게시 브랜치</span><input id="branch" value="main" autocomplete="off"></label></div>
+  <p class="muted" id="editLinkHint">GitHub Pages에서 열면 저장소 주소를 자동 추정합니다. 맞지 않으면 직접 입력하세요.</p>
+  <div class="buttons"><button class="btn primary" type="button" id="copyConfig">설정 코드 복사</button><button class="btn" type="button" id="downloadConfig">설정 파일 다운로드</button><a class="btn ghost" id="openGitHub" href="https://github.com" target="_blank" rel="noopener noreferrer" style="text-decoration:none;text-align:center">GitHub 파일 편집 ↗</a></div>
+  <p style="margin-bottom:0">GitHub 편집 화면에서 기존 <code>settings.js</code> 내용을 전부 선택한 뒤 복사한 코드로 바꾸고 <b>Commit changes</b>를 누르세요. 이후 참가자는 기존 카카오톡 링크를 새로고침하면 최신 내용이 표시됩니다.</p>
+</section>
+</div>
+<footer class="bottom"><button class="btn" type="button" id="bottomDownload">설정파일 받기</button><button class="btn primary" type="button" id="bottomCopy">설정 코드 복사</button></footer>
+</div>
+<script>
+(function(){
+'use strict';
+let original=null, draft=null, active=1; const $=s=>document.getElementById(s);
+const escapeHtml=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+function status(msg,error=false){const x=$('status');x.textContent=msg;x.classList.toggle('error',error);x.classList.add('show');}
+function field(label,path,value,opts={}){const attr=opts.rows?`<textarea data-bind="${escapeHtml(path)}" rows="${opts.rows}">${escapeHtml(value)}</textarea>`:`<input data-bind="${escapeHtml(path)}" type="${opts.type||'text'}" value="${escapeHtml(value)}" ${opts.min?'min="'+opts.min+'"':''} ${opts.max?'max="'+opts.max+'"':''} ${opts.step?'step="'+opts.step+'"':''}>`;return `<label class="field ${opts.wide?'wide':''}"><span>${escapeHtml(label)}</span>${attr}</label>`;}
+function get(path){let v=draft;for(const k of path.split('.'))v=v[k];return v;}
+function set(path,value){const ps=path.split('.');let o=draft;for(let i=0;i<ps.length-1;i++)o=o[ps[i]];o[ps[ps.length-1]]=value;saveDraft();}
+function saveDraft(){try{sessionStorage.setItem('wolmi_admin_draft_v2',JSON.stringify(draft));}catch{}}
+function make(){
+ const e=draft.event;
+ $('basicFields').innerHTML=[field('행사 제목','event.title',e.title),field('행사 날짜 표시','event.dateLabel',e.dateLabel),field('짧은 소개 문구','event.subtitle',e.subtitle,{wide:true,rows:2})].join('');
+ $('timeFields').innerHTML=[
+   field('첫 집결 시간','event.meetingTime',e.meetingTime),field('첫 집결 장소','event.meetingPlace',e.meetingPlace,{rows:2}),
+   field('중간 집결 시간','event.checkpointTime',e.checkpointTime),field('중간 집결 장소','event.checkpointPlace',e.checkpointPlace,{rows:2}),
+   field('회식 착석 시간','event.dinnerTime',e.dinnerTime),field('회식 장소','event.dinnerPlace',e.dinnerPlace,{rows:2}),
+   field('가장 위에 띄울 공지','event.announcement',e.announcement,{rows:3,wide:true}),
+   field('공통 출발 동선','event.assemblyRoute',e.assemblyRoute,{rows:3,wide:true}),
+   field('행사 흐름 안내','event.eventFlow',e.eventFlow,{rows:2,wide:true})
+ ].join('');
+ $('missionSettings').innerHTML=[field('필수 미션 개수 (1~7)','requiredMissions',draft.requiredMissions,{type:'number',min:1,max:7}),field('성공한 미션 1개당 점수','missionPoints',draft.missionPoints,{type:'number',min:1,max:30})].join('');
+ $('extraFields').innerHTML=[field('카카오맵 연결 주소','event.kakaoMapUrl',e.kakaoMapUrl,{wide:true}),field('인증사진 제출 안내','event.photoSubmission',e.photoSubmission,{wide:true,rows:2}),field('긴급 연락 안내','event.contactMessage',e.contactMessage,{wide:true,rows:2})].join('');
+ $('ruleEditors').innerHTML=draft.photoRules.map((s,i)=>field('공통 규칙 '+(i+1),'photoRules.'+i,s,{rows:3})).join('');
+ makeRoutes();
+}
+function makeRoutes(){
+ $('routeTabs').innerHTML=Object.keys(draft.routes).map(n=>`<button type="button" data-route="${n}" class="${active===Number(n)?'selected':''}">${n}코스</button>`).join('');
+ $('routeTabs').querySelectorAll('[data-route]').forEach(b=>b.addEventListener('click',()=>{active=Number(b.dataset.route);makeRoutes();}));
+ const r=draft.routes[active];
+ $('routeInfo').innerHTML='<div class="fields">'+[
+   field('코스 이름','routes.'+active+'.name',r.name),
+   field('코스 한 줄 소개','routes.'+active+'.lead',r.lead),
+   field('자세한 소개','routes.'+active+'.desc',r.desc,{rows:3,wide:true}),
+   `<label class="field wide"><span>경유지 (한 줄에 하나씩)</span><textarea rows="4" data-route-path="${active}">${escapeHtml(r.path.join('\n'))}</textarea></label>`
+ ].join('')+'</div>';
+ $('missionEditors').innerHTML=r.missions.map((m,i)=>`<section class="mission"><h3>${active}코스 · ${i+1}번 미션 <small>${i<4?'길에서 만나는 장소':'찾아보기'}</small></h3><div class="fields">
+  <label class="field"><span>미션 구분</span><select data-bind="routes.${active}.missions.${i}.0"><option value="walk" ${m[0]==='walk'?'selected':''}>길에서 만나는 장소</option><option value="find" ${m[0]==='find'?'selected':''}>조금 더 찾아보기</option></select></label>
+  ${field('미션 제목','routes.'+active+'.missions.'+i+'.1',m[1])}
+  ${field('장소·대상','routes.'+active+'.missions.'+i+'.2',m[2],{wide:true})}
+  ${field('성공 조건·사진 설명','routes.'+active+'.missions.'+i+'.3',m[3],{rows:3,wide:true})}
+  ${field('주의사항·대체 조건','routes.'+active+'.missions.'+i+'.4',m[4],{rows:2,wide:true})}
+  </div></section>`).join('');
+}
+function onChange(ev){const el=ev.target;if(el.dataset.bind){const k=el.dataset.bind;set(k,(k==='requiredMissions'||k==='missionPoints')?Number(el.value):el.value);}else if(el.dataset.routePath){draft.routes[el.dataset.routePath].path=el.value.split('\n').map(x=>x.trim()).filter(Boolean);saveDraft();}}
+document.addEventListener('input',onChange);document.addEventListener('change',onChange);
+function validate(){const c=draft;const limits=Object.values(c.routes).map(r=>r.missions.length);if(!Number.isInteger(c.requiredMissions)||c.requiredMissions<1||c.requiredMissions>Math.min(...limits))return '필수 미션 개수는 1~'+Math.min(...limits)+' 사이여야 합니다.';
+ if(!Number.isInteger(c.missionPoints)||c.missionPoints<1||c.missionPoints>30)return '미션 배점은 1~30 사이여야 합니다.';
+ for(const k of ['meetingTime','checkpointTime','dinnerTime']){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(c.event[k]))return '시간은 14:40처럼 24시간 형식으로 입력해 주세요: '+k;}
+ if(!c.event.title.trim()||!c.event.checkpointPlace.trim())return '제목과 중간 집결 장소는 비울 수 없습니다.';
+ for(const [n,r] of Object.entries(c.routes)){if(!r.name.trim())return n+'코스 이름을 입력하세요.';for(const m of r.missions){if(!m[1].trim()||!m[3].trim())return n+'코스 미션의 제목·성공 조건을 입력하세요.';}}
+ return null;}
+function formatted(){const err=validate();if(err){status(err,true);return null;}draft.updatedAt=new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).replace(/\.\s*/g,'. ').trim();saveDraft();return 'window.WOLMI_CONFIG = '+JSON.stringify(draft,null,2)+';\n';}
+async function copy(){const data=formatted();if(data===null)return;try{if(!navigator.clipboard)throw new Error('clipboard');await navigator.clipboard.writeText(data);}catch{const ta=document.createElement('textarea');ta.value=data;ta.style.position='fixed';ta.style.top='-1000px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(!ok){status('복사 권한이 제한되어 있습니다. 설정 파일 다운로드를 이용해 주세요.',true);return;}}status('설정 코드를 복사했습니다. GitHub의 settings.js 편집창에서 기존 내용을 모두 지우고 붙여넣은 뒤 커밋하세요.');}
+function download(){const data=formatted();if(data===null)return;const blob=new Blob([data],{type:'text/javascript;charset=utf-8'}),url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='settings.js';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);status('settings.js 파일을 다운로드했습니다. GitHub에서 동일 파일을 교체하세요.');}
+$('copyConfig').addEventListener('click',copy);$('bottomCopy').addEventListener('click',copy);$('downloadConfig').addEventListener('click',download);$('bottomDownload').addEventListener('click',download);
+$('restoreDraft').addEventListener('click',()=>{try{const v=JSON.parse(sessionStorage.getItem('wolmi_admin_draft_v2')||'null');if(v&&v.event&&v.routes){draft=v;make();status('이 브라우저에 남아 있던 임시 수정본을 불러왔습니다.');}else{status('복원할 임시 수정본이 없습니다.',true);}}catch{status('임시 수정본이 손상되었습니다.',true);}});
+$('resetLive').addEventListener('click',()=>{if(!confirm('임시 수정사항을 버리고 현재 공개된 설정을 다시 불러올까요?'))return;draft=JSON.parse(JSON.stringify(original));make();saveDraft();status('공개 설정으로 돌아왔습니다.');});
+function guessRepo(){const host=location.hostname;if(host.endsWith('.github.io')){const owner=host.slice(0,-'.github.io'.length);const bits=location.pathname.split('/').filter(Boolean);$('repo').value=owner+'/'+(bits[0]&&bits[0]!=='editor.html'?bits[0]:owner+'.github.io');}updateLink();}
+function updateLink(){const repo=$('repo').value.trim();const branch=$('branch').value.trim()||'main';const a=$('openGitHub');if(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo)){a.href='https://github.com/'+repo+'/edit/'+encodeURIComponent(branch)+'/settings.js';$('editLinkHint').textContent='설정 파일 주소: '+repo+' / '+branch+' / settings.js';}else{a.href='https://github.com';$('editLinkHint').textContent='저장소 이름을 “계정명/저장소명”으로 입력하면 바로 편집 링크가 만들어집니다.';}}
+$('repo').addEventListener('input',updateLink);$('branch').addEventListener('input',updateLink);
+function start(){if(!window.WOLMI_CONFIG){status('설정 파일을 열지 못했습니다.',true);return;}original=JSON.parse(JSON.stringify(window.WOLMI_CONFIG));draft=JSON.parse(JSON.stringify(original));make();guessRepo();$('loadedInfo').textContent='현재 설정 버전: '+(draft.version||'')+' · 마지막 수정: '+(draft.updatedAt||'미기재')+' · 총 '+Object.values(draft.routes).reduce((n,r)=>n+r.missions.length,0)+'개 미션';}
+const s=document.createElement('script');s.src='./settings.js?v='+Date.now();s.onload=start;s.onerror=()=>status('설정 파일 settings.js를 불러오지 못했습니다. 파일 구성을 확인해 주세요.',true);document.body.append(s);
+})();
+</script>
+</body>
+</html>

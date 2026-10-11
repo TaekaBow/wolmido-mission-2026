@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#123b48">
+  <meta name="color-scheme" content="light">
+  <meta name="description" content="월요일에 우리, 월미도! 팀별 탐방 미션·관광지도·집결시간을 확인하세요.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="월요일에 우리, 월미도!">
+  <meta property="og:title" content="월요일에 우리, 월미도! | 팀별 미션지">
+  <meta property="og:description" content="우리 팀의 코스·선택 미션·집결 장소와 시간을 한눈에 확인하세요.">
+  <!-- 배포 주소를 알게 되면 og:image를 절대 URL로 변경하면 카카오톡 미리보기가 더욱 안정적입니다. -->
+  <meta property="og:image" content="assets/kakao-preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <title>월요일에 우리, 월미도! · 모바일 미션지</title>
+  <style>
+    :root{font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;color:#1c2a35;background:#e9e6e0;--ink:#1c2a35;--muted:#687581;--orange:#cb6128;--sea:#0f737b;--cream:#f7f5ef;--white:#fff;--line:#e9e7df;--shadow:0 12px 34px rgba(25,45,52,.08)}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}a{color:inherit;text-decoration:none}button:focus-visible,a:focus-visible{outline:3px solid #1d8791;outline-offset:3px}
+    .shell{width:min(100%,620px);min-height:100svh;background:var(--cream);margin:auto;box-shadow:0 0 70px #19252d1f;padding-bottom:calc(95px + env(safe-area-inset-bottom))}
+    .masthead{background:#123b48;color:#fff;position:relative;overflow:hidden;padding:30px 24px}
+    .masthead::before{content:"";position:absolute;right:-100px;top:-122px;width:275px;height:275px;border-radius:50%;border:45px solid #72ccc217}
+    .masthead::after{content:"";position:absolute;right:-42px;bottom:-124px;width:200px;height:200px;border-radius:50%;background:#13918929}
+    .kicker{font-size:11px;letter-spacing:.1em;font-weight:800;color:#94d7d3;position:relative}
+    h1{font-size:clamp(30px,7vw,42px);line-height:1.15;letter-spacing:-.055em;margin:14px 0 11px;font-weight:850;position:relative}
+    .subtitle{margin:0;color:#c6d7dc;font-size:14px;line-height:1.65;position:relative}
+    .timegrid{margin-top:23px;display:grid;grid-template-columns:repeat(3,1fr);border:1px solid #ffffff26;border-radius:16px;overflow:hidden;position:relative}
+    .timegrid>div{padding:12px 4px;text-align:center;border-right:1px solid #ffffff21}.timegrid>div:last-child{border-right:0}
+    .timegrid small{display:block;font-size:10px;color:#a8c9cb;margin-bottom:5px}.timegrid strong{font-size:18px;letter-spacing:-.02em}
+    main{padding:0 18px 18px}.section{margin-top:24px}.section-heading{display:flex;gap:9px;justify-content:space-between;align-items:baseline;margin-bottom:12px}.eyebrow{font-size:11px;letter-spacing:.14em;color:var(--sea);font-weight:850}.section-heading h2{font-size:19px;letter-spacing:-.035em;margin:2px 0;font-weight:850}.hint{font-size:12px;line-height:1.5;color:var(--muted)}
+    .notice{border:1px solid #ead5c0;border-radius:16px;padding:14px 15px;background:#fff7ed;box-shadow:0 2px 5px #00000005}.notice strong{color:#8e480e}.notice p{margin:5px 0 0;font-size:13px;line-height:1.65}.notice.emergency{border-color:#dca484;background:#fff1e5}.notice .hintline{margin-top:9px;color:#7c6153}
+    .location{margin-top:11px;border-radius:14px;border:1px solid #e7e4da;background:#fff;padding:13px 14px;display:flex;gap:9px;align-items:flex-start}.location span{font-size:19px}.location p{margin:2px 0 0;color:#596770;font-size:13px;line-height:1.6}.location strong{font-size:13px}
+    .routes{display:grid;grid-template-columns:1fr 1fr;gap:10px}.routeBtn{border:1.5px solid #e3e1d9;border-radius:17px;background:#fff;text-align:left;padding:15px 12px;min-height:115px;box-shadow:0 3px 8px #141e2306}.routeBtn.active{border-color:var(--sea);background:#e8f5f2}.routeBtn .num{display:block;color:var(--orange);font-size:12px;font-weight:850;margin-bottom:9px}.routeBtn strong{display:block;font-weight:830;letter-spacing:-.045em;font-size:15px}.routeBtn small{display:block;margin-top:6px;color:var(--muted);font-size:11px;line-height:1.35}
+    .routehero{position:relative;border-radius:20px;padding:19px;background:#fff;box-shadow:var(--shadow);border:1px solid var(--line)}.routekicker{font-size:12px;font-weight:800;color:var(--orange)}.routehero h2{font-size:25px;line-height:1.25;letter-spacing:-.05em;margin:6px 0}.routehero p{margin:0;color:var(--muted);font-size:13px;line-height:1.65}.routepath{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-top:15px}.pathstep{background:#f3f4f2;border-radius:8px;padding:6px 8px;font-size:11px;font-weight:680}.arrow{font-size:11px;color:#a7abb0}
+    .progress-card{display:flex;align-items:center;gap:15px;justify-content:space-between;background:#d9efe9;border:1px solid #c1e0d9;border-radius:17px;padding:17px 16px;margin-top:12px}.progress-card strong{font-size:15px}.progress-card p{margin:4px 0 0;font-size:12px;color:#426366;line-height:1.4}.count{font-size:28px;color:#1e666e;font-weight:850;min-width:70px;text-align:right}.count span{font-size:15px;color:#789998}.lineprogress{height:7px;border-radius:10px;background:#bcd8d2;overflow:hidden;margin-top:9px}.lineprogress>b{height:100%;display:block;background:var(--sea);border-radius:10px;width:0;transition:width .25s ease}
+    .mission{border:1px solid var(--line);background:#fff;border-radius:18px;margin-bottom:11px;box-shadow:0 2px 8px #1e282806;overflow:hidden}.mission-inner{padding:15px 15px 14px}.mission-head{display:flex;gap:12px;align-items:flex-start}.mission-no{flex:none;width:37px;height:37px;border-radius:12px;background:#f7e9db;color:#ad5424;display:grid;place-items:center;font-size:15px;font-weight:850}.mission.find .mission-no{background:#e6f1ec;color:#2d716f}.mission-meta{display:flex;gap:6px;align-items:center;margin-bottom:3px;font-size:11px;font-weight:780;color:#777c80}.tag{padding:3px 7px;border-radius:6px;background:#f3f4f4;color:#687783}.mission.find .tag{background:#e5f2eb;color:#386f56}.mission h3{letter-spacing:-.03em;font-size:17px;line-height:1.35;margin:0;font-weight:830}.mission p{font-size:13px;line-height:1.65;margin:10px 0 0;color:#394951}.mission .spot{color:#93632d;font-size:11px;font-weight:750;margin-top:7px}.mission .tip{font-size:12px;color:#778288;margin-top:7px;line-height:1.5}.checkbtn{display:flex;align-items:center;justify-content:center;gap:7px;margin-top:12px;background:#f3f5f3;color:#45606a;border:1px solid #e1e7e3;border-radius:12px;width:100%;padding:11px;min-height:46px;font-weight:770;font-size:13px}.mission.selected{border:2px solid #33918b}.mission.selected .checkbtn{background:#e3f3ec;color:#166b65;border-color:#c8e9df}.mission.selected .mission-inner{padding:14px 14px 13px}
+    .maptiles{display:grid;gap:12px}.maptile{border-radius:17px;overflow:hidden;background:white;border:1px solid var(--line)}.maptile img{display:block;width:100%;height:205px;object-fit:contain;object-position:center;background:#f1f4f3;cursor:zoom-in}.maptile .mapfooter{padding:12px 13px;display:flex;align-items:center;justify-content:space-between;gap:10px}.maptile strong{font-size:13px}.maptile small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.viewbtn{border:1px solid #cddfdc;color:#286f72;border-radius:10px;background:#eef6f4;padding:9px 11px;white-space:nowrap;font-weight:790;font-size:12px}
+    .rules{background:#fff;border:1px solid var(--line);border-radius:17px;padding:15px 16px}.rules h3{font-size:15px;margin:0 0 10px}.rules ul{margin:0;padding-left:19px;font-size:13px;line-height:1.8;color:#40515b}.rules li+li{margin-top:6px}.rules li{overflow-wrap:anywhere}
+    .actions{display:flex;gap:10px;margin-top:13px}.primary,.secondary{border-radius:13px;font-weight:800;min-height:46px;padding:12px 13px;font-size:13px;flex:1;display:grid;place-items:center;text-align:center}.primary{background:#126875;color:#fff;border:1px solid #126875}.secondary{background:#fff;border:1px solid #d9d9d2;color:#526069}.footnote{font-size:11px;color:#869096;margin-top:14px;line-height:1.6;text-align:center}
+    .bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,620px);z-index:5;background:#fffffffa;border-top:1px solid #e6e6df;display:grid;grid-template-columns:repeat(3,1fr);padding:9px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px #0f14140e}.bottomnav a{text-align:center;font-size:12px;font-weight:780;padding:9px 4px;border-radius:10px;color:#52646c}.bottomnav a:hover{background:#eaf3f1;color:#126875}
+    .hidden{display:none!important}.toaster{position:fixed;bottom:94px;left:50%;transform:translateX(-50%);max-width:calc(100% - 50px);background:#1e303c;color:#fff;font-size:12px;border-radius:12px;padding:11px 15px;z-index:20;box-shadow:0 4px 16px #0003;pointer-events:none;opacity:0;transition:opacity .2s}.toaster.show{opacity:1}
+    dialog.viewer{margin:0;max-width:none;max-height:none;width:100vw;height:100dvh;inset:0;border:0;background:#f5f6f4;padding:0;overflow:hidden}dialog.viewer::backdrop{background:#091820cf}dialog.viewer .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 15px;background:#fff;border-bottom:1px solid #ddd;min-height:60px}dialog.viewer strong{font-size:14px}dialog.viewer button{border:1px solid #d4d7d4;border-radius:10px;background:#fff;padding:8px 12px;min-height:40px;font-weight:770}.tools{display:flex;gap:6px}.pan{height:calc(100dvh - 60px);overflow:auto;touch-action:pan-x pan-y;overscroll-behavior:contain}.pan img{display:block;max-width:none;width:100%;height:auto;margin:auto}
+    .updated{font-size:11px;color:#9abfc0;position:relative;margin-top:8px}.mutedBtn{border:0;background:transparent;color:#a9cccb;text-decoration:underline;font-size:11px;padding:0 2px;margin-left:4px}
+    @media(min-width:620px){main{padding-left:24px;padding-right:24px}.masthead{padding:34px 30px}.maptile img{height:230px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+  </style>
+</head>
+<body>
+<div class="shell" id="top">
+  <header class="masthead">
+    <div class="kicker" id="kicker">WOLMIDO MISSION TOUR</div>
+    <h1 id="eventTitle">월요일에 우리, 월미도!</h1>
+    <p class="subtitle" id="eventSubtitle">팀별 미션지</p>
+    <div class="timegrid" aria-label="주요 일정">
+      <div><small id="meetingLabel">첫 집결</small><strong id="meetingTime">14:40</strong></div>
+      <div><small id="checkpointLabel">중간 집결</small><strong id="checkpointTime">16:30</strong></div>
+      <div><small id="dinnerLabel">전원 착석</small><strong id="dinnerTime">17:30</strong></div>
+    </div>
+    <div class="updated">내용 수정 시 <button class="mutedBtn" type="button" id="reloadBtn">새로고침 ↻</button> <span id="lastUpdated"></span></div>
+  </header>
+  <main>
+    <section class="section" id="todaySection">
+      <div class="notice emergency" id="announcementBox"><strong>오늘의 안내</strong><p id="announcement">준비 중입니다.</p></div>
+      <div class="location"><span aria-hidden="true">📍</span><div><strong>첫 집결 장소</strong><p id="meetingPlace"></p></div></div>
+      <div class="location"><span aria-hidden="true">⏱</span><div><strong>중간 집결 장소 · <span id="checkpointInlineTime">16:30</span></strong><p id="checkpointPlace"></p></div></div>
+      <div class="location"><span aria-hidden="true">🍽</span><div><strong><span id="dinnerInlineTime">17:30</span> 전원 착석</strong><p id="dinnerPlace"></p></div></div>
+    </section>
+    <section class="section" id="routesSection">
+      <div class="section-heading"><div><div class="eyebrow">01 · COURSE</div><h2>우리 팀 코스 선택</h2></div><span class="hint">추첨 결과에 따라 선택</span></div>
+      <div class="routes" id="routeButtons"></div>
+    </section>
+    <section class="section" id="introSection">
+      <div class="notice"><strong>공통 출발 동선</strong><p id="assemblyRoute"></p></div>
+    </section>
+    <section class="section" id="missionSection">
+      <div class="section-heading"><div><div class="eyebrow">02 · QUEST</div><h2>코스별 미션</h2></div><span class="hint" id="missionCountHint">7개 중 3개 선택</span></div>
+      <div id="routeDetail"></div><div id="progressArea"></div><div id="missions"></div>
+      <div id="missionActions" class="actions hidden"><button class="primary" type="button" id="copyResult">선택 미션 복사</button><button class="secondary" type="button" id="shareRoute">코스 링크 공유</button></div>
+    </section>
+    <section class="section" id="maps">
+      <div class="section-heading"><div><div class="eyebrow">03 · TOUR MAP</div><h2>지도 보면서 찾아가기</h2></div><span class="hint">눌러서 확대</span></div>
+      <div class="maptiles" id="mapTiles"></div>
+      <div class="actions"><a class="secondary" id="kakaoMapLink" href="https://map.kakao.com" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 확인 ↗</a></div>
+      <p class="footnote">지도: 월미공원 관광안내 자료 참고. 산책로 운영·통제 여부는 현장 안내 우선.<br>공개 배포 시 지도 원본의 재배포 조건을 확인하세요.</p>
+    </section>
+    <section class="section" id="guide">
+      <div class="section-heading"><div><div class="eyebrow">04 · RULES</div><h2>인증 · 집결 안내</h2></div></div>
+      <div class="rules"><h3>사진 인증은 이렇게</h3><ul id="rulesList"></ul></div>
+      <div class="notice" style="margin-top:12px"><strong id="checkpointNoticeTitle">중간 집결</strong><p id="checkpointNotice"></p><p class="hintline" id="submissionNotice"></p></div>
+    </section>
+    <p class="footnote" id="footerText">월미도 모바일 미션 안내 · 공개용</p>
+  </main>
+</div>
+<nav class="bottomnav" aria-label="화면 메뉴"><a href="#missionSection" id="bottomMissionLink">코스 미션</a><a href="#maps">참고 지도</a><a href="#guide">인증·집결</a></nav>
+<div class="toaster" id="toast" role="status" aria-live="polite"></div>
+<dialog id="mapViewer" class="viewer" aria-label="지도 확대 화면"><div class="toolbar"><strong id="mapTitle">지도 확대</strong><div class="tools"><button type="button" id="zoomOut" aria-label="축소">－</button><button type="button" id="zoomIn" aria-label="확대">＋</button><button type="button" id="closeViewer">닫기 ✕</button></div></div><div class="pan" id="pan"><img id="bigMap" alt="확대된 월미공원 안내지도"></div></dialog>
+<noscript><p style="padding:20px;text-align:center">미션지를 보려면 자바스크립트를 켜 주세요.</p></noscript>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id); let cfg=null,route=0,toastTimer=null,zoom=100;
+const html=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const text=(id,s)=>{const el=$(id);if(el)el.textContent=String(s??'');};
+const count=()=>Math.max(1,Math.min(30,Number(cfg.requiredMissions)||3));
+function notice(s){const t=$('toast');t.textContent=s;t.classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>t.classList.remove('show'),3300);}
+function selectionKey(n){return 'wolmido_missions_20261012_v2_course_'+n;}
+function getSelected(n){let arr=[];try{arr=JSON.parse(localStorage.getItem(selectionKey(n))||'[]');}catch{}const length=cfg.routes[n].missions.length;return Array.isArray(arr)?[...new Set(arr)].filter(x=>Number.isInteger(x)&&x>=0&&x<length).slice(0,count()):[];}
+function setSelected(n,arr){try{localStorage.setItem(selectionKey(n),JSON.stringify(arr));}catch{}}
+function validUrl(u){try{const v=new URL(u,location.href);return (v.protocol==='https:'||v.protocol==='http:')?v.href:'#';}catch{return '#';}}
+function start(){
+  const c=window.WOLMI_CONFIG;if(!c||!c.event||!c.routes||!Object.keys(c.routes).length){notice('행사 설정을 읽을 수 없습니다.');return;}
+  cfg=c;const e=c.event;document.title=(e.title||'월미도 미션지')+' · 모바일 미션지';
+  text('kicker','WOLMIDO MISSION TOUR / '+(e.dateLabel||''));text('eventTitle',e.title);text('eventSubtitle',e.subtitle);
+  ['meeting','checkpoint','dinner'].forEach(n=>{text(n+'Label',e[n+'Label']);text(n+'Time',e[n+'Time']);});
+  text('lastUpdated',c.updatedAt?'· 안내 갱신 '+c.updatedAt:'');
+  text('announcement',e.announcement);$('announcementBox').classList.toggle('hidden',!e.announcement);
+  text('meetingPlace',e.meetingPlace);text('checkpointPlace',e.checkpointPlace);text('dinnerPlace',e.dinnerPlace);
+  text('checkpointInlineTime',e.checkpointTime);text('dinnerInlineTime',e.dinnerTime);text('assemblyRoute',e.assemblyRoute);
+  text('checkpointNoticeTitle',e.checkpointTime+' · '+e.checkpointPlace);
+  text('checkpointNotice',e.eventFlow||'중간 집결 후 경쟁전을 진행합니다.');text('submissionNotice',e.photoSubmission+' '+e.contactMessage);
+  text('missionCountHint',c.routes['1'].missions.length+'개 중 '+count()+'개 선택');
+  text('bottomMissionLink',count()+'개 미션');text('footerText',(e.title||'월미도')+' · 최종 안내는 운영진 공지 기준');
+  $('kakaoMapLink').href=validUrl(e.kakaoMapUrl||'https://map.kakao.com');
+  $('rulesList').innerHTML=(c.photoRules||[]).map(s=>'<li>'+html(s)+'</li>').join('');
+  $('mapTiles').innerHTML=(c.mapInfo||[]).map((m,i)=>`<article class="maptile"><img src="${html(m.file)}" alt="${html(m.title)}" data-map="${i}" loading="lazy"><div class="mapfooter"><div><strong>${html(m.title)}</strong><small>${html(m.description)}</small></div><button class="viewbtn" type="button" data-map="${i}">확대 보기 ↗</button></div></article>`).join('');
+  $('mapTiles').querySelectorAll('[data-map]').forEach(x=>x.addEventListener('click',()=>openMap(Number(x.dataset.map))));
+  route=Number(new URLSearchParams(location.search).get('course'));if(!cfg.routes[route])route=0;
+  render();
+}
+function render(){
+  $('routeButtons').innerHTML=Object.keys(cfg.routes).map(n=>{const d=cfg.routes[n];return `<button class="routeBtn ${route===Number(n)?'active':''}" type="button" data-course="${n}" aria-pressed="${route===Number(n)}"><span class="num">COURSE ${String(n).padStart(2,'0')}</span><strong>${html(d.name)}</strong><small>${html(d.lead)}</small></button>`}).join('');
+  $('routeButtons').querySelectorAll('[data-course]').forEach(x=>x.addEventListener('click',()=>{selectRoute(Number(x.dataset.course));$('missionSection').scrollIntoView({behavior:'smooth'});}));
+  if(!route){$('routeDetail').innerHTML=`<div class="notice"><strong>코스를 먼저 선택하세요</strong><p>배정된 코스를 누르면 관광 안내와 미션 ${count()}개 선택 기록이 표시됩니다. 선택 기록은 이 휴대폰에서만 보관됩니다.</p></div>`;$('progressArea').innerHTML='';$('missions').innerHTML='';$('missionActions').classList.add('hidden');return;}
+  const d=cfg.routes[route];text('missionCountHint',d.missions.length+'개 중 '+count()+'개 선택');
+  $('routeDetail').innerHTML=`<div class="routehero"><div class="routekicker">COURSE ${String(route).padStart(2,'0')} · ${d.missions.length} MISSIONS</div><h2>${html(d.name)}</h2><p>${html(d.desc)}</p><div class="routepath">${(d.path||[]).map((p,i)=>`${i?'<span class="arrow">›</span>':''}<span class="pathstep">${html(p)}</span>`).join('')}</div></div>`;
+  $('missionActions').classList.remove('hidden');renderMissions();
+}
+function selectRoute(n){route=n;const url=new URL(location.href);url.searchParams.set('course',String(n));history.replaceState({},'',url);render();}
+function renderMissions(){
+  if(!route)return;const d=cfg.routes[route],selected=getSelected(route),needed=count(),max=Math.min(needed,d.missions.length);
+  $('progressArea').innerHTML=`<div class="progress-card"><div><strong>${selected.length===max?'선택 완료! 인증사진을 남겨주세요':'마음에 드는 미션 '+max+'개를 골라보세요'}</strong><p>사진은 단체 채팅방에 별도 제출 · 이 체크는 선택 기록입니다.</p><div class="lineprogress"><b style="width:${Math.min(100,selected.length/max*100)}%"></b></div></div><div class="count">${selected.length}<span>/${max}</span></div></div>`;
+  $('missions').innerHTML=d.missions.map((m,i)=>{const checked=selected.includes(i),isFind=m[0]==='find';return `<article class="mission ${isFind?'find':''} ${checked?'selected':''}"><div class="mission-inner"><div class="mission-head"><span class="mission-no">${String(i+1).padStart(2,'0')}</span><div><div class="mission-meta"><span class="tag">${isFind?'조금 더 찾아보기':'길에서 만나는 장소'}</span><span>${html(cfg.missionPoints)}점</span></div><h3>${html(m[1])}</h3><div class="spot">장소 · ${html(m[2])}</div></div></div><p>${html(m[3])}</p><p class="tip">${html(m[4])}</p><button class="checkbtn" type="button" data-mission="${i}" aria-pressed="${checked}">${checked?'✓ 선택한 미션':'＋ 이 미션 선택하기'}</button></div></article>`}).join('');
+  $('missions').querySelectorAll('[data-mission]').forEach(x=>x.addEventListener('click',()=>{const i=Number(x.dataset.mission),old=getSelected(route);if(old.includes(i)){setSelected(route,old.filter(n=>n!==i));}else if(old.length>=max){notice('미션은 '+max+'개까지 선택할 수 있습니다. 다른 미션을 해제해 주세요.');return;}else{setSelected(route,[...old,i]);}renderMissions();}));
+}
+async function copy(s){try{if(!navigator.clipboard)throw new Error('clipboard');await navigator.clipboard.writeText(s);notice('복사했습니다. 카카오톡 단톡방에 붙여 넣으세요.');}catch{const el=document.createElement('textarea');el.value=s;el.style.position='fixed';el.style.top='-1000px';document.body.append(el);el.select();const ok=document.execCommand('copy');el.remove();notice(ok?'복사했습니다.':'선택한 내용을 직접 복사해 주세요.');}}
+$('copyResult').addEventListener('click',()=>{if(!route)return;const d=cfg.routes[route],sel=getSelected(route).sort((a,b)=>a-b),lines=sel.map(i=>`${i+1}번 ${d.missions[i][1]}`).join('\n')||'아직 선택한 미션 없음';copy(`[${cfg.event.title}] ${route}코스 · ${d.name}\n선택 ${sel.length}/${count()}\n${lines}\n${cfg.event.photoSubmission}`);});
+$('shareRoute').addEventListener('click',async()=>{if(!route)return;const url=new URL(location.href);url.searchParams.set('course',route);if(navigator.share){try{await navigator.share({title:cfg.event.title+' · '+cfg.routes[route].name,url:url.href});return;}catch{}}copy(url.href);});
+$('reloadBtn').addEventListener('click',()=>location.reload());
+const viewer=$('mapViewer'),big=$('bigMap'),pan=$('pan');
+function openMap(i){const m=cfg.mapInfo[i];if(!m)return;big.src=m.file;big.alt=m.title;text('mapTitle',m.title);zoom=130;big.style.width=zoom+'%';try{viewer.showModal();}catch{window.open(m.file,'_blank');}pan.scrollLeft=0;pan.scrollTop=0;}
+$('closeViewer').addEventListener('click',()=>viewer.close());$('zoomIn').addEventListener('click',()=>{zoom=Math.min(360,zoom+45);big.style.width=zoom+'%';});$('zoomOut').addEventListener('click',()=>{zoom=Math.max(100,zoom-45);big.style.width=zoom+'%';});viewer.addEventListener('click',e=>{if(e.target===viewer)viewer.close();});
+// 매 접속마다 최신 설정 로드: 카카오톡 내장브라우저의 구버전 캐시 대응
+const s=document.createElement('script');s.src='./settings.js?v='+Date.now();s.onload=start;s.onerror=()=>{text('announcement','설정 파일을 불러오지 못했습니다. 페이지를 새로고침해 주세요.');};document.body.append(s);
+})();
+</script>
+</body>
+</html>
