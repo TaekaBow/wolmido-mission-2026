@@ -27,7 +27,10 @@ window.WOLMI_CONFIG = {
     "viewpointMapUrl": "https://place.map.kakao.com/17811732",
     "checkpointMapUrl": "https://place.map.kakao.com/592954764",
     "dinnerMapUrl": "https://place.map.kakao.com/45078266",
-    "operationsNote": "현장 운영팀(잠정): 공경록 Unit장, 홍기택, 한승민 (3명)"
+    "operationsNote": "운영진: 공경록 유닛장 합류 예정 · 기타 담당자는 현장 확인",
+    "assemblyStartName": "석양마루매점",
+    "assemblyStartAddress": "인천 제물포구 월미로 329",
+    "assemblyStartMapUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329"
   },
   "requiredMissions": 3,
   "missionPoints": 10,
