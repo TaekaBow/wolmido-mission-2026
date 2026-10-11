@@ -16,7 +16,7 @@
 </head>
 <body>
 <div class="wrap">
-<header class="head"><small>WOLMIDO · ADMIN EDITOR</small><h1>행사 안내 편집실</h1><p>집결 시간·장소, 필수 미션 개수, 코스 및 28개 미션의 문구를 한글 입력칸에서 수정합니다.</p></header>
+<header class="head"><small>WOLMIDO · ADMIN EDITOR</small><h1>행사 안내 편집실</h1><p>집결 시간·장소, 필수 미션 개수, 공통 미션 3개와 코스별 미션 28개의 문구를 한글 입력칸에서 수정합니다.</p></header>
 <div class="columns">
 <section class="card">
   <div class="notice"><strong>이 화면만으로는 홈페이지가 바뀌지 않습니다.</strong><br>내용을 수정한 뒤 <b>설정 코드 복사 → GitHub 편집기에 붙여넣기 → 변경사항 커밋</b>해야 같은 공개 주소에 반영됩니다. GitHub 로그인 권한이 있는 사람만 실제 게시할 수 있습니다. 편집 과정에서 비밀번호나 토큰은 필요하지 않습니다.</div>
@@ -26,9 +26,10 @@
 <section class="card"><h2>1. 행사 기본 정보</h2><div class="fields" id="basicFields"></div></section>
 <section class="card"><h2>2. 시간 · 장소 · 공지</h2><div class="fields" id="timeFields"></div></section>
 <section class="card"><h2>3. 미션 선택 기준</h2><div class="two" id="missionSettings"></div><p>필수 개수를 바꾸면 사이트의 선택 버튼·진행률·공유 문구에 즉시 적용됩니다. <strong>실무 운영시트의 미션 배점도 함께 확인</strong>하세요.</p></section>
-<section class="card"><h2>4. 코스별 미션 수정</h2><p>각 코스마다 길에서 만나는 명소 4개와 찾아보는 명소 3개가 준비되어 있습니다. 미션 제목, 장소, 설명과 유의사항을 자유롭게 수정할 수 있습니다.</p><div class="tabs" id="routeTabs"></div><div id="routeInfo"></div><div id="missionEditors"></div></section>
-<section class="card"><h2>5. 공통 규칙 · 지도 링크</h2><div class="fields" id="extraFields"></div><h3 style="font-size:15px;margin:22px 0 10px">공통 인증 규칙</h3><div id="ruleEditors"></div></section>
-<section class="card" id="publishSection"><h2>6. GitHub에 반영하기</h2>
+<section class="card"><h2>4. 공통 미션 3개 수정</h2><p>네 코스 어디서든 수행하는 팀 기록 미션입니다. 제목·촬영 형식·성공 조건·대체 방법을 수정할 수 있습니다.</p><div id="commonMissionEditors"></div></section>
+<section class="card"><h2>5. 코스별 미션 수정</h2><p>각 코스마다 길에서 만나는 명소 4개와 찾아보는 명소 3개가 준비되어 있습니다. 미션 제목, 장소, 설명과 유의사항을 자유롭게 수정할 수 있습니다.</p><div class="tabs" id="routeTabs"></div><div id="routeInfo"></div><div id="missionEditors"></div></section>
+<section class="card"><h2>6. 공통 규칙 · 지도 링크</h2><div class="fields" id="extraFields"></div><h3 style="font-size:15px;margin:22px 0 10px">공통 인증 규칙</h3><div id="ruleEditors"></div></section>
+<section class="card" id="publishSection"><h2>7. GitHub에 반영하기</h2>
   <div class="notice good">사이트 주소는 바꾸지 않습니다. <strong>settings.js 한 파일만 수정</strong>하면 미션지의 내용이 갱신됩니다.</div>
   <div class="two" style="margin-top:16px"><label class="field"><span>GitHub 저장소 (계정명/저장소명)</span><input id="repo" placeholder="예: myname/wolmido-mission" autocomplete="off"></label><label class="field"><span>게시 브랜치</span><input id="branch" value="main" autocomplete="off"></label></div>
   <p class="muted" id="editLinkHint">GitHub Pages에서 열면 저장소 주소를 자동 추정합니다. 맞지 않으면 직접 입력하세요.</p>
@@ -62,7 +63,16 @@ function make(){
  $('missionSettings').innerHTML=[field('필수 미션 개수 (1~7)','requiredMissions',draft.requiredMissions,{type:'number',min:1,max:7}),field('성공한 미션 1개당 점수','missionPoints',draft.missionPoints,{type:'number',min:1,max:30})].join('');
  $('extraFields').innerHTML=[field('카카오맵 연결 주소','event.kakaoMapUrl',e.kakaoMapUrl,{wide:true}),field('인증사진 제출 안내','event.photoSubmission',e.photoSubmission,{wide:true,rows:2}),field('긴급 연락 안내','event.contactMessage',e.contactMessage,{wide:true,rows:2})].join('');
  $('ruleEditors').innerHTML=draft.photoRules.map((s,i)=>field('공통 규칙 '+(i+1),'photoRules.'+i,s,{rows:3})).join('');
+ makeCommon();
  makeRoutes();
+}
+function makeCommon(){
+ $('commonMissionEditors').innerHTML=(draft.commonMissions||[]).map((m,i)=>'<section class="mission"><h3>C'+(i+1)+' · 공통 미션</h3><div class="fields">'+[
+  field('미션 제목','commonMissions.'+i+'.title',m.title),
+  field('촬영·제출 형식','commonMissions.'+i+'.format',m.format),
+  field('성공 조건·안내','commonMissions.'+i+'.description',m.description,{rows:3,wide:true}),
+  field('유의사항·대체 방법','commonMissions.'+i+'.tip',m.tip,{rows:3,wide:true})
+ ].join('')+'</div></section>').join('');
 }
 function makeRoutes(){
  $('routeTabs').innerHTML=Object.keys(draft.routes).map(n=>`<button type="button" data-route="${n}" class="${active===Number(n)?'selected':''}">${n}코스</button>`).join('');
@@ -88,18 +98,20 @@ function validate(){const c=draft;const limits=Object.values(c.routes).map(r=>r.
  if(!Number.isInteger(c.missionPoints)||c.missionPoints<1||c.missionPoints>30)return '미션 배점은 1~30 사이여야 합니다.';
  for(const k of ['meetingTime','checkpointTime','dinnerTime']){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(c.event[k]))return '시간은 14:40처럼 24시간 형식으로 입력해 주세요: '+k;}
  if(!c.event.title.trim()||!c.event.checkpointPlace.trim())return '제목과 중간 집결 장소는 비울 수 없습니다.';
+ if(!Array.isArray(c.commonMissions)||c.commonMissions.length!==3)return '공통 미션은 3개여야 합니다.';
+ for(const m of c.commonMissions){if(!m.title.trim()||!m.description.trim()||!m.format.trim())return '공통 미션 제목·형식·성공 조건을 입력해 주세요.';}
  for(const [n,r] of Object.entries(c.routes)){if(!r.name.trim())return n+'코스 이름을 입력하세요.';for(const m of r.missions){if(!m[1].trim()||!m[3].trim())return n+'코스 미션의 제목·성공 조건을 입력하세요.';}}
  return null;}
 function formatted(){const err=validate();if(err){status(err,true);return null;}draft.updatedAt=new Date().toLocaleString('ko-KR',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hour12:false}).replace(/\.\s*/g,'. ').trim();saveDraft();return 'window.WOLMI_CONFIG = '+JSON.stringify(draft,null,2)+';\n';}
 async function copy(){const data=formatted();if(data===null)return;try{if(!navigator.clipboard)throw new Error('clipboard');await navigator.clipboard.writeText(data);}catch{const ta=document.createElement('textarea');ta.value=data;ta.style.position='fixed';ta.style.top='-1000px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(!ok){status('복사 권한이 제한되어 있습니다. 설정 파일 다운로드를 이용해 주세요.',true);return;}}status('설정 코드를 복사했습니다. GitHub의 settings.js 편집창에서 기존 내용을 모두 지우고 붙여넣은 뒤 커밋하세요.');}
 function download(){const data=formatted();if(data===null)return;const blob=new Blob([data],{type:'text/javascript;charset=utf-8'}),url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='settings.js';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);status('settings.js 파일을 다운로드했습니다. GitHub에서 동일 파일을 교체하세요.');}
 $('copyConfig').addEventListener('click',copy);$('bottomCopy').addEventListener('click',copy);$('downloadConfig').addEventListener('click',download);$('bottomDownload').addEventListener('click',download);
-$('restoreDraft').addEventListener('click',()=>{try{const v=JSON.parse(sessionStorage.getItem('wolmi_admin_draft_v2')||'null');if(v&&v.event&&v.routes){draft=v;make();status('이 브라우저에 남아 있던 임시 수정본을 불러왔습니다.');}else{status('복원할 임시 수정본이 없습니다.',true);}}catch{status('임시 수정본이 손상되었습니다.',true);}});
+$('restoreDraft').addEventListener('click',()=>{try{const v=JSON.parse(sessionStorage.getItem('wolmi_admin_draft_v2')||'null');if(v&&v.event&&v.routes&&Array.isArray(v.commonMissions)&&v.commonMissions.length===3){draft=v;make();status('이 브라우저에 남아 있던 임시 수정본을 불러왔습니다.');}else{status('복원할 임시 수정본이 없습니다.',true);}}catch{status('임시 수정본이 손상되었습니다.',true);}});
 $('resetLive').addEventListener('click',()=>{if(!confirm('임시 수정사항을 버리고 현재 공개된 설정을 다시 불러올까요?'))return;draft=JSON.parse(JSON.stringify(original));make();saveDraft();status('공개 설정으로 돌아왔습니다.');});
 function guessRepo(){const host=location.hostname;if(host.endsWith('.github.io')){const owner=host.slice(0,-'.github.io'.length);const bits=location.pathname.split('/').filter(Boolean);$('repo').value=owner+'/'+(bits[0]&&bits[0]!=='editor.html'?bits[0]:owner+'.github.io');}updateLink();}
 function updateLink(){const repo=$('repo').value.trim();const branch=$('branch').value.trim()||'main';const a=$('openGitHub');if(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo)){a.href='https://github.com/'+repo+'/edit/'+encodeURIComponent(branch)+'/settings.js';$('editLinkHint').textContent='설정 파일 주소: '+repo+' / '+branch+' / settings.js';}else{a.href='https://github.com';$('editLinkHint').textContent='저장소 이름을 “계정명/저장소명”으로 입력하면 바로 편집 링크가 만들어집니다.';}}
 $('repo').addEventListener('input',updateLink);$('branch').addEventListener('input',updateLink);
-function start(){if(!window.WOLMI_CONFIG){status('설정 파일을 열지 못했습니다.',true);return;}original=JSON.parse(JSON.stringify(window.WOLMI_CONFIG));draft=JSON.parse(JSON.stringify(original));make();guessRepo();$('loadedInfo').textContent='현재 설정 버전: '+(draft.version||'')+' · 마지막 수정: '+(draft.updatedAt||'미기재')+' · 총 '+Object.values(draft.routes).reduce((n,r)=>n+r.missions.length,0)+'개 미션';}
+function start(){if(!window.WOLMI_CONFIG){status('설정 파일을 열지 못했습니다.',true);return;}original=JSON.parse(JSON.stringify(window.WOLMI_CONFIG));draft=JSON.parse(JSON.stringify(original));make();guessRepo();$('loadedInfo').textContent='현재 설정 버전: '+(draft.version||'')+' · 마지막 수정: '+(draft.updatedAt||'미기재')+' · 공통 '+draft.commonMissions.length+'개 + 코스 '+Object.values(draft.routes).reduce((n,r)=>n+r.missions.length,0)+'개 미션';}
 const s=document.createElement('script');s.src='./settings.js?v='+Date.now();s.onload=start;s.onerror=()=>status('설정 파일 settings.js를 불러오지 못했습니다. 파일 구성을 확인해 주세요.',true);document.body.append(s);
 })();
 </script>
