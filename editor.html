@@ -82,7 +82,8 @@ function makePlaces(){
   field('위도 (미확인 시 비워둠)','places.'+key+'.lat',p.lat??'',{type:'number',step:'any'}),
   field('경도 (미확인 시 비워둠)','places.'+key+'.lng',p.lng??'',{type:'number',step:'any'}),
   field('카카오맵 장소 ID (선택)','places.'+key+'.kakaoPlaceId',p.kakaoPlaceId||''),
-  field('카카오맵 웹 주소 (선택)','places.'+key+'.kakaoUrl',p.kakaoUrl||'',{wide:true})
+  field('카카오맵 웹 주소 (선택)','places.'+key+'.kakaoUrl',p.kakaoUrl||'',{wide:true}),
+  field('구글지도 공유 링크 (선택)','places.'+key+'.googleUrl',p.googleUrl||'',{wide:true})
  ].join('')+'</div></section>').join('');
 }
 function makeCommon(){
