@@ -143,14 +143,12 @@ function start(){
   const c=window.WOLMI_CONFIG;if(!c||!c.event||!c.routes||!Object.keys(c.routes).length){notice('행사 설정을 읽을 수 없습니다.');return;}
   cfg=c;const e=c.event;document.title=(e.title||'월미도 미션지')+' · 모바일 미션지';
   text('kicker','WOLMIDO MISSION TOUR / '+(e.dateLabel||''));text('eventTitle',e.title);text('eventSubtitle',e.subtitle);
-  ['meeting','checkpoint','dinner'].forEach(n=>{text(n+'Label',e[n+'Label']);text(n+'Time',e[n+'Time']);});
+  ['parking','meeting','viewpoint'].forEach(n=>{text(n+'Label',e[n+'Label']);text(n+'Time',e[n+'Time']);});
   text('lastUpdated',c.updatedAt?'· 안내 갱신 '+c.updatedAt:'');
   text('announcement',e.announcement);$('announcementBox').classList.toggle('hidden',!e.announcement);
-  text('meetingPlace',e.meetingPlace);text('checkpointPlace',e.checkpointPlace);text('dinnerPlace',e.dinnerPlace);
-   text('navigationName',e.navigationName||'국립인천해양박물관');text('navigationAddress',e.navigationAddress||'인천 제물포구 월미로 294');
-   for(const [id,url] of Object.entries({navigationMap:e.navigationMapUrl,meetingMap:e.meetingMapUrl,checkpointMap:e.checkpointMapUrl,dinnerMap:e.dinnerMapUrl,assemblyStartMap:e.assemblyStartMapUrl,viewpointMap:e.viewpointMapUrl})){$(id).href=validUrl(url||e.kakaoMapUrl||'https://map.kakao.com');}
-  text('checkpointInlineTime',e.checkpointTime);text('dinnerInlineTime',e.dinnerTime);text('assemblyRoute',e.assemblyRoute);
-  text('checkpointNoticeTitle',e.checkpointTime+' · '+e.checkpointPlace);
+  text('parkingInlineTime',e.parkingTime);text('parkingPlace',e.parkingPlace);text('meetingPlace',e.meetingPlace);text('viewpointPlace',e.viewpointPlace);text('dinnerPlace',e.dinnerPlace);
+  text('meetingInlineTime',e.meetingTime);text('viewpointInlineTime',e.viewpointTime);text('dinnerInlineTime',e.dinnerTime);text('assemblyRoute',e.assemblyRoute);
+  text('checkpointNoticeTitle','코스별 '+e.checkpointPlace+' 중간 집결');
   text('checkpointNotice',e.eventFlow||'중간 집결 후 경쟁전을 진행합니다.');text('submissionNotice',e.photoSubmission+' '+e.contactMessage);
   text('missionCountHint',c.routes['1'].missions.length+'개 중 '+count()+'개 선택');
   text('bottomMissionLink',count()+'개 미션');text('footerText',(e.title||'월미도')+' · 최종 안내는 운영진 공지 기준');
@@ -162,12 +160,20 @@ function start(){
   render();
   renderCommon();
 }
+function updateCheckpoint(){
+ const e=cfg.event,cp=(e.checkpointTimeByCourse||{})[route],id=String(route);
+ text('checkpointInlineTime',cp||'16:30 / 16:50');
+ text('checkpointNote',cp?(id+'코스 · '+cfg.routes[id].name+' · '+cp+'까지 학무대'):('1·2코스 16:50까지 / 3·4코스 16:30까지'));
+ if($('earlyStops'))$('earlyStops').open=!Boolean(route);
+ text('checkpointNoticeTitle',cp?cp+' 학무대 집결':'코스별 학무대 집결 (16:30 / 16:50)');
+}
 function render(){
+  updateCheckpoint();
   $('routeButtons').innerHTML=Object.keys(cfg.routes).map(n=>{const d=cfg.routes[n];return `<button class="routeBtn ${route===Number(n)?'active':''}" type="button" data-course="${n}" aria-pressed="${route===Number(n)}"><span class="num">COURSE ${String(n).padStart(2,'0')}</span><strong>${html(d.name)}</strong><small>${html(d.lead)}</small></button>`}).join('');
   $('routeButtons').querySelectorAll('[data-course]').forEach(x=>x.addEventListener('click',()=>{selectRoute(Number(x.dataset.course));$('missionSection').scrollIntoView({behavior:'smooth'});}));
   if(!route){$('routeDetail').innerHTML=`<div class="notice"><strong>코스를 먼저 선택하세요</strong><p>배정된 코스를 누르면 관광 안내와 미션 ${count()}개 선택 기록이 표시됩니다. 선택 기록은 이 휴대폰에서만 보관됩니다.</p></div>`;$('progressArea').innerHTML='';$('missions').innerHTML='';$('missionActions').classList.add('hidden');return;}
   const d=cfg.routes[route];text('missionCountHint',d.missions.length+'개 중 '+count()+'개 선택');
-  $('routeDetail').innerHTML=`<div class="routehero"><div class="routekicker">COURSE ${String(route).padStart(2,'0')} · ${d.missions.length} MISSIONS</div><h2>${html(d.name)}</h2><p>${html(d.desc)}</p><a class="maplink" href="${html(validUrl(d.mapUrl||cfg.event.kakaoMapUrl))}" target="_blank" rel="noopener noreferrer">이 코스 대표 목적지 카카오맵 ↗</a><div class="routepath">${(d.path||[]).map((p,i)=>`${i?'<span class="arrow">›</span>':''}<span class="pathstep">${html(p)}</span>`).join('')}</div></div>`;
+  $('routeDetail').innerHTML=`<div class="routehero"><div class="routekicker">COURSE ${String(route).padStart(2,'0')} · ${d.missions.length} MISSIONS</div><h2>${html(d.name)}</h2><p>${html(d.desc)}</p><button class="maplink" type="button" data-place="route${route}">이 코스 목적지 · 지도앱 선택 ↗</button><div class="routepath">${(d.path||[]).map((p,i)=>`${i?'<span class="arrow">›</span>':''}<span class="pathstep">${html(p)}</span>`).join('')}</div></div>`;
   $('missionActions').classList.remove('hidden');renderMissions();
 }
 function selectRoute(n){route=n;const url=new URL(location.href);url.searchParams.set('course',String(n));history.replaceState({},'',url);render();}
