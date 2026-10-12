@@ -14,7 +14,7 @@ jobs:
       - name: Inspect nine Google Maps links
         run: |
           python - <<'PY'
-          import json, re, urllib.request, urllib.parse, urllib.error
+          import json, re, html, urllib.request, urllib.parse, urllib.error
           from datetime import datetime, timezone
           links = {
               "parking": "https://maps.app.goo.gl/Zbm7DuuZ9Ys61cDM9?g_st=ac",
@@ -34,10 +34,10 @@ jobs:
                   request=urllib.request.Request(short,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36","Accept-Language":"ko-KR,ko;q=0.9,en;q=0.5"})
                   with urllib.request.urlopen(request,timeout=13) as response:
                       destination=response.geturl()
-                      body=response.read(1500000).decode("utf-8","replace")
+                      body=response.read(8000000).decode("utf-8","replace")
                   result["resolved_url"]=destination
                   result["http"]="ok"
-                  combined=urllib.parse.unquote(destination)+" "+urllib.parse.unquote(body[:200000])
+                  combined=html.unescape(urllib.parse.unquote(destination))+" "+html.unescape(urllib.parse.unquote(body))
                   exact=re.search(r"!3d(3[6-8]\.\d{4,})!4d(12[5-8]\.\d{4,})",combined)
                   center=re.search(r"@([3][6-8]\.\d{4,}),(12[5-8]\.\d{4,})",combined)
                   if exact:
@@ -46,8 +46,18 @@ jobs:
                   if center:
                       result["map_center_lat"]=float(center.group(1))
                       result["map_center_lng"]=float(center.group(2))
-                  if not exact and not center:
-                      result["preview"]=re.sub(r"\s+"," ",body[:250]).strip()
+                  pins=[]
+                  for m in re.finditer(r"!3d(3[6-8]\.\d{4,})!4d(12[5-8]\.\d{4,})",combined):
+                      pins.append({"lat":float(m.group(1)),"lng":float(m.group(2)),"at":m.start(),"context":combined[max(0,m.start()-80):m.end()+65]})
+                  pairs=[]
+                  for m in re.finditer(r"(37\.\d{4,})\s*[,;]\s*(126\.\d{4,})",combined):
+                      pairs.append({"lat":float(m.group(1)),"lng":float(m.group(2)),"at":m.start(),"context":combined[max(0,m.start()-80):m.end()+80]})
+                  result["response_chars"]=len(body)
+                  result["place_pin_candidates"]=pins[:16]
+                  result["numeric_pair_candidates"]=pairs[:18]
+                  result["place_pin_total"]=len(pins)
+                  result["numeric_pair_total"]=len(pairs)
+                  result["preview"]=re.sub(r"\s+"," ",body[:450]).strip()
               except Exception as e:
                   result["error"]=str(e)[:400]
               results[key]=result
