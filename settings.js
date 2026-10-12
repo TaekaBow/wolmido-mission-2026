@@ -1,36 +1,48 @@
 window.WOLMI_CONFIG = {
-  "version": "2.2",
-  "updatedAt": "2026-10-12 08:40",
+  "version": "2.3",
+  "updatedAt": "2026-10-12 10:20",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
     "subtitle": "명소도 찾고, 사진도 남기고. 우리 팀이 고른 미션에 도전하세요.",
-    "meetingLabel": "첫 집결",
-    "meetingTime": "14:40",
-    "meetingPlace": "국립인천해양박물관 (인천 제물포구 월미로 294)",
-    "checkpointLabel": "중간 집결",
+    "meetingLabel": "집결",
+    "meetingTime": "14:50",
+    "meetingPlace": "석양마루매점 앞 (월미로 329)",
+    "checkpointLabel": "학무대 집결",
     "checkpointTime": "16:30",
-    "checkpointPlace": "월미짱랜드/월미테마파크 앞 학무대",
+    "checkpointPlace": "학무대",
     "dinnerLabel": "전원 착석",
     "dinnerTime": "17:30",
-    "dinnerPlace": "달빛조개",
+    "dinnerPlace": "달빛조개 · 인천 제물포구 월미문화로 65",
     "assemblyRoute": "석양마루매점(인천 제물포구 월미로 329) → 돈대삼거리 → 월미산둘레길(남측) → 전망대길(데크계단) → 월미공원전망대",
-    "announcement": "14:40 국립인천해양박물관 첫 집결 · 16:30 학무대 중간 집결. 안전과 복귀 시각이 미션보다 우선입니다.",
-    "eventFlow": "전망대 이후 팀별 탐방 → 학무대 간식 보급 및 게임 선수 선발 → 짱랜드 오락실 경기 → 17:30 식당 착석",
+    "announcement": "학무대 집결은 코스별로 다릅니다. 1·2코스 16:50 / 3·4코스 16:30. 안전과 정시 복귀가 우선입니다.",
+    "eventFlow": "14:40 국립인천해양박물관 주차 → 14:50 석양마루매점 앞 집결 → 15:20 월미공원전망대 전체 사진 → 팀별 탐방 → 학무대 코스별 집결 → 전체팀 도착 후 경기(진행 시각은 운영진 공지) → 17:30 달빛조개 착석",
     "kakaoMapUrl": "https://kko.to/3eZNrnEfUp",
     "photoSubmission": "공통 미션 3개와 선택한 코스 미션의 사진·영상은 지정된 카카오톡 단체 채팅방에 제출해 주세요.",
     "contactMessage": "긴급 상황은 팀 리더 또는 운영진에게 바로 연락해 주세요.",
     "navigationName": "국립인천해양박물관",
     "navigationAddress": "인천 제물포구 월미로 294",
     "navigationMapUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20294",
-    "meetingMapUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20294",
+    "meetingMapUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
     "viewpointMapUrl": "https://place.map.kakao.com/17811732",
     "checkpointMapUrl": "https://place.map.kakao.com/592954764",
     "dinnerMapUrl": "https://place.map.kakao.com/45078266",
     "operationsNote": "운영진: 공경록 유닛장 합류 예정 · 기타 담당자는 현장 확인",
     "assemblyStartName": "석양마루매점",
     "assemblyStartAddress": "인천 제물포구 월미로 329",
-    "assemblyStartMapUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329"
+    "assemblyStartMapUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
+    "parkingLabel": "주차",
+    "parkingTime": "14:40",
+    "parkingPlace": "국립인천해양박물관 주차장 (월미로 294)",
+    "viewpointLabel": "전망대 집결",
+    "viewpointTime": "15:20",
+    "viewpointPlace": "월미공원전망대",
+    "checkpointTimeByCourse": {
+      "1": "16:50",
+      "2": "16:50",
+      "3": "16:30",
+      "4": "16:30"
+    }
   },
   "requiredMissions": 3,
   "missionPoints": 10,
@@ -338,5 +350,88 @@ window.WOLMI_CONFIG = {
       "description": "1년 뒤 우리가 다시 봤을 때 웃음 날 오늘의 순간을 기록해 주세요. 팀원 3명 이상이 기억하고 싶은 일이나 미래의 우리에게 전할 한마디를 이어 말하는 10~15초 영상을 찍어 주세요.",
       "tip": "영상 촬영이 어려우면 팀원 3명 이상이 나온 사진 1장과 세 사람의 한마디를 글로 제출해도 인정합니다. 결과물은 지정된 단체 채팅방에만 제출하세요."
     }
-  ]
+  ],
+  "places": {
+    "parking": {
+      "name": "국립인천해양박물관 주차장",
+      "lat": 37.47012,
+      "lng": 126.59694,
+      "kakaoPlaceId": "",
+      "kakaoUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20294",
+      "source": "주차장 중심부 참고 좌표",
+      "travelMode": "car"
+    },
+    "store": {
+      "name": "석양마루매점",
+      "lat": 37.4701481430491,
+      "lng": 126.60027502583,
+      "kakaoPlaceId": "",
+      "kakaoUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
+      "source": "매점 등록 위치",
+      "travelMode": "walk"
+    },
+    "viewpoint": {
+      "name": "월미공원전망대",
+      "lat": null,
+      "lng": null,
+      "kakaoPlaceId": "17811732",
+      "kakaoUrl": "https://place.map.kakao.com/17811732",
+      "source": "카카오맵 장소 ID",
+      "travelMode": "walk"
+    },
+    "route1": {
+      "name": "월미전통정원",
+      "lat": null,
+      "lng": null,
+      "kakaoPlaceId": "17408866",
+      "kakaoUrl": "https://place.map.kakao.com/17408866",
+      "source": "카카오맵 장소 ID",
+      "travelMode": "walk"
+    },
+    "route2": {
+      "name": "월미산정상",
+      "lat": null,
+      "lng": null,
+      "kakaoPlaceId": "17556404",
+      "kakaoUrl": "https://place.map.kakao.com/17556404",
+      "source": "카카오맵 장소 ID",
+      "travelMode": "walk"
+    },
+    "route3": {
+      "name": "월미도선착장",
+      "lat": 37.47561,
+      "lng": 126.59747,
+      "kakaoPlaceId": "17805923",
+      "kakaoUrl": "https://place.map.kakao.com/17805923",
+      "source": "선착장 중심부 참고 좌표",
+      "travelMode": "walk"
+    },
+    "route4": {
+      "name": "월미도등대길",
+      "lat": 37.46892,
+      "lng": 126.59489,
+      "kakaoPlaceId": "1550030810",
+      "kakaoUrl": "https://place.map.kakao.com/1550030810",
+      "source": "등대 인근 참고 좌표 · 통행 가능한 탐방로 우선",
+      "travelMode": "walk"
+    },
+    "checkpoint": {
+      "name": "학무대",
+      "lat": null,
+      "lng": null,
+      "kakaoPlaceId": "592954764",
+      "kakaoUrl": "https://place.map.kakao.com/592954764",
+      "source": "카카오맵 장소 ID",
+      "travelMode": "walk"
+    },
+    "dinner": {
+      "name": "달빛조개",
+      "lat": null,
+      "lng": null,
+      "kakaoPlaceId": "45078266",
+      "kakaoUrl": "https://place.map.kakao.com/45078266",
+      "source": "카카오맵 장소 ID",
+      "travelMode": "walk"
+    }
+  }
 };
