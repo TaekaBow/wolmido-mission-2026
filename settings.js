@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
   "version": "2.5",
-  "updatedAt": "2026. 10. 12. 11:18",
+  "updatedAt": "2026. 10. 12. 최종 안내",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -27,7 +27,7 @@ window.WOLMI_CONFIG = {
     "viewpointMapUrl": "https://place.map.kakao.com/17811732",
     "checkpointMapUrl": "https://place.map.kakao.com/592954764",
     "dinnerMapUrl": "https://place.map.kakao.com/45078266",
-    "operationsNote": "기획Unit 아반떼 선발 이동(홍기택·한승민·공경록) / 장호준 책임 후발 별도 합류",
+    "operationsNote": "현장 운영 안내는 전체 카카오톡 공지방 기준",
     "assemblyStartName": "석양마루매점",
     "assemblyStartAddress": "인천 제물포구 월미로 329",
     "assemblyStartMapUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
@@ -47,7 +47,7 @@ window.WOLMI_CONFIG = {
     "groupChatNotice": "전체 공지용 카카오톡 채팅방에 입장해 주세요. 집결 변경·코스별 안내·인증 제출은 공지방에서 확인합니다.",
     "activityBudgetPerTeam": 100000,
     "activityBudgetRule": "팀별 10만 원 한도 내 간식·음료 등 자유롭게 사용하세요. 결제 영수증은 반드시 챙겨 주세요.",
-    "teamLeaderRule": "차량 이동 중 팀장을 상의하고, 서로 다른 차에 탄 팀원은 카카오톡으로 의견을 모아 14:50 석양마루매점 집결 시 확정합니다. 운전자는 운전에 집중해 주세요.",
+    "teamLeaderRule": "이동 중 팀장을 상의하고, 서로 떨어져 이동하는 팀원은 카카오톡으로 의견을 모아 14:50 석양마루매점 집결 시 최종 확정합니다.",
     "meetingRule": "14:40까지 국립인천해양박물관 주차 완료 → 14:50 석양마루매점 앞 집결 → 15:20 월미공원전망대 단체사진 및 코스 추첨",
     "lateArrivalNotice": "장호준 책임은 후발대로 B팀에 합류합니다.",
     "dinnerOnlyNotice": "경영지원팀은 하성선 책임만 야유회에 참가하며, 하상민 팀장님을 포함한 나머지 인원은 17:30 달빛조개 저녁 식사부터 합류합니다."
@@ -548,89 +548,5 @@ window.WOLMI_CONFIG = {
       "cardHolder": "홍기택 법인카드(운영진)",
       "lateArrivals": []
     }
-  },
-  "vehicles": [
-    {
-      "id": "planning",
-      "name": "기획Unit 아반떼",
-      "driver": "홍기택",
-      "passengers": [
-        "홍기택",
-        "한승민",
-        "공경록"
-      ],
-      "isAdvance": true
-    },
-    {
-      "id": "af2",
-      "name": "AF사업2팀 차량",
-      "driver": "김인호",
-      "passengers": [
-        "김인호",
-        "백도영",
-        "강현아",
-        "황정은"
-      ],
-      "isAdvance": false
-    },
-    {
-      "id": "af1",
-      "name": "AF사업1팀 차량",
-      "driver": "노현석",
-      "passengers": [
-        "노현석",
-        "정보람",
-        "이희정",
-        "민유경"
-      ],
-      "isAdvance": false
-    },
-    {
-      "id": "kim",
-      "name": "김우석 책임 차량",
-      "driver": "김우석",
-      "passengers": [
-        "김우석",
-        "백지승",
-        "김현철",
-        "임경희"
-      ],
-      "isAdvance": false
-    },
-    {
-      "id": "jeon",
-      "name": "전호영 팀장 차량",
-      "driver": "전호영",
-      "passengers": [
-        "전호영",
-        "김소민",
-        "김관우"
-      ],
-      "isAdvance": false
-    },
-    {
-      "id": "im",
-      "name": "임명제 팀장 차량",
-      "driver": "임명제",
-      "passengers": [
-        "임명제",
-        "정호형",
-        "하성선",
-        "박지연"
-      ],
-      "isAdvance": false
-    },
-    {
-      "id": "ceo",
-      "name": "대표이사 차량",
-      "driver": "고영태",
-      "passengers": [
-        "고영태",
-        "권영훈",
-        "김도현",
-        "류다현"
-      ],
-      "isAdvance": false
-    }
-  ]
+  }
 };
