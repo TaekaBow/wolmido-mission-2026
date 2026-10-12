@@ -8,7 +8,7 @@ permissions:
 jobs:
   resolve:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 12
     steps:
       - uses: actions/checkout@v4
       - name: Inspect nine Google Maps links
@@ -65,10 +65,60 @@ jobs:
           output={"generated":datetime.now(timezone.utc).isoformat(),"source":"Google Maps shortlink redirects (GitHub Actions)","results":results}
           with open("map_resolution_results.json","w",encoding="utf-8") as f:json.dump(output,f,ensure_ascii=False,indent=2)
           PY
+      - name: Inspect Google Maps place locations in Chrome
+        continue-on-error: true
+        run: |
+          python -m pip install -q selenium
+          python - <<'PY'
+          import json,re,time
+          from selenium import webdriver
+          from selenium.webdriver.chrome.options import Options
+          data=json.load(open("map_resolution_results.json",encoding="utf-8"))
+          opts=Options()
+          opts.add_argument("--headless=new")
+          opts.add_argument("--no-sandbox")
+          opts.add_argument("--disable-dev-shm-usage")
+          opts.add_argument("--disable-gpu")
+          opts.add_argument("--lang=ko-KR")
+          opts.add_argument("--window-size=1200,850")
+          opts.page_load_strategy="eager"
+          driver=webdriver.Chrome(options=opts)
+          driver.set_page_load_timeout(18)
+          out={}
+          for key,item in data["results"].items():
+              u=item.get("resolved_url",item["short_url"])
+              record={"short_url":item["short_url"]}
+              try:
+                  try:driver.get(u)
+                  except Exception as exc:record["load_warning"]=str(exc)[:200]
+                  time.sleep(4)
+                  href=driver.current_url
+                  record["browser_url"]=href[:3500]
+                  record["title"]=driver.title[:300]
+                  html=driver.page_source
+                  record["html_len"]=len(html)
+                  pin=re.search(r"!3d(3[6-8]\.\d{4,})!4d(12[5-8]\.\d{4,})",href)
+                  if not pin:pin=re.search(r"!3d(3[6-8]\.\d{4,})!4d(12[5-8]\.\d{4,})",html)
+                  if pin:record["pin"]=[float(pin.group(1)),float(pin.group(2))]
+                  center=re.search(r"@([3][6-8]\.\d{4,}),(12[5-8]\.\d{4,})",href)
+                  if center:record["center"]=[float(center.group(1)),float(center.group(2))]
+                  coordinates=[]
+                  for m in re.finditer(r"(37\.\d{4,})\s*,\s*(126\.\d{4,})",html):
+                      coords=[float(m.group(1)),float(m.group(2))]
+                      if coords not in coordinates:coordinates.append(coords)
+                      if len(coordinates)>=12:break
+                  record["coordinate_candidates"]=coordinates
+              except Exception as exc:
+                  record["error"]=str(exc)[:400]
+              out[key]=record
+              print("BROWSER_MAP",key,json.dumps(record,ensure_ascii=False)[:1000],flush=True)
+          driver.quit()
+          with open("map_browser_results.json","w",encoding="utf-8") as f:json.dump(out,f,ensure_ascii=False,indent=2)
+          PY
       - name: Save coordinate inspection report
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add map_resolution_results.json
+          git add map_resolution_results.json map_browser_results.json
           git commit -m "chore: temporary Google Maps redirect coordinate lookup"
           git push
