@@ -24,12 +24,13 @@
   <div class="buttons"><button class="btn" type="button" id="restoreDraft">임시 수정본 복원</button><button class="btn" type="button" id="resetLive">현재 공개 설정 다시 불러오기</button></div>
 </section>
 <section class="card"><h2>1. 행사 기본 정보</h2><div class="fields" id="basicFields"></div></section>
-<section class="card"><h2>2. 시간 · 장소 · 공지</h2><div class="fields" id="timeFields"></div></section>
+<section class="card"><h2>2. 시간 · 장소 · 공지</h2><p>공통 시각과 코스별 학무대 집결 시각을 따로 관리합니다.</p><div class="fields" id="timeFields"></div></section>
 <section class="card"><h2>3. 미션 선택 기준</h2><div class="two" id="missionSettings"></div><p>필수 개수를 바꾸면 사이트의 선택 버튼·진행률·공유 문구에 즉시 적용됩니다. <strong>실무 운영시트의 미션 배점도 함께 확인</strong>하세요.</p></section>
 <section class="card"><h2>4. 공통 미션 3개 수정</h2><p>네 코스 어디서든 수행하는 팀 기록 미션입니다. 제목·촬영 형식·성공 조건·대체 방법을 수정할 수 있습니다.</p><div id="commonMissionEditors"></div></section>
 <section class="card"><h2>5. 코스별 미션 수정</h2><p>각 코스마다 길에서 만나는 명소 4개와 찾아보는 명소 3개가 준비되어 있습니다. 미션 제목, 장소, 설명과 유의사항을 자유롭게 수정할 수 있습니다.</p><div class="tabs" id="routeTabs"></div><div id="routeInfo"></div><div id="missionEditors"></div></section>
-<section class="card"><h2>6. 공통 규칙 · 지도 링크</h2><div class="fields" id="extraFields"></div><h3 style="font-size:15px;margin:22px 0 10px">공통 인증 규칙</h3><div id="ruleEditors"></div></section>
-<section class="card" id="publishSection"><h2>7. GitHub에 반영하기</h2>
+<section class="card"><h2>6. 지도앱 연결 장소 관리</h2><p>좌표가 검증된 장소는 위도·경도를 입력합니다. 불확실한 좌표는 비워두세요. 그러면 해당 지도앱에서 장소명으로 검색하거나 기존 카카오 장소 ID를 사용합니다.</p><div id="placeEditors"></div></section>
+<section class="card"><h2>7. 공통 규칙 · 기존 지도 주소</h2><div class="fields" id="extraFields"></div><h3 style="font-size:15px;margin:22px 0 10px">공통 인증 규칙</h3><div id="ruleEditors"></div></section>
+<section class="card" id="publishSection"><h2>8. GitHub에 반영하기</h2>
   <div class="notice good">사이트 주소는 바꾸지 않습니다. <strong>settings.js 한 파일만 수정</strong>하면 미션지의 내용이 갱신됩니다.</div>
   <div class="two" style="margin-top:16px"><label class="field"><span>GitHub 저장소 (계정명/저장소명)</span><input id="repo" placeholder="예: myname/wolmido-mission" autocomplete="off"></label><label class="field"><span>게시 브랜치</span><input id="branch" value="main" autocomplete="off"></label></div>
   <p class="muted" id="editLinkHint">GitHub Pages에서 열면 저장소 주소를 자동 추정합니다. 맞지 않으면 직접 입력하세요.</p>
@@ -53,10 +54,15 @@ function make(){
  const e=draft.event;
  $('basicFields').innerHTML=[field('행사 제목','event.title',e.title),field('행사 날짜 표시','event.dateLabel',e.dateLabel),field('짧은 소개 문구','event.subtitle',e.subtitle,{wide:true,rows:2})].join('');
  $('timeFields').innerHTML=[
-   field('차량 내비 도착지','event.navigationName',e.navigationName),field('내비 도착지 주소','event.navigationAddress',e.navigationAddress),field('내비 카카오맵 링크','event.navigationMapUrl',e.navigationMapUrl,{wide:true}),
-   field('첫 집결 시간','event.meetingTime',e.meetingTime),field('첫 집결 장소','event.meetingPlace',e.meetingPlace,{rows:2}),field('첫 집결지 카카오맵','event.meetingMapUrl',e.meetingMapUrl,{wide:true}),
-   field('중간 집결 시간','event.checkpointTime',e.checkpointTime),field('중간 집결 장소','event.checkpointPlace',e.checkpointPlace,{rows:2}),field('학무대 카카오맵','event.checkpointMapUrl',e.checkpointMapUrl,{wide:true}),
-   field('회식 착석 시간','event.dinnerTime',e.dinnerTime),field('회식 장소','event.dinnerPlace',e.dinnerPlace,{rows:2}),field('회식 장소 카카오맵','event.dinnerMapUrl',e.dinnerMapUrl,{wide:true}),
+   field('주차 시각','event.parkingTime',e.parkingTime),field('박물관 주차 장소','event.parkingPlace',e.parkingPlace),
+   field('석양마루매점 집결 시각','event.meetingTime',e.meetingTime),field('첫 집결 장소','event.meetingPlace',e.meetingPlace),
+   field('월미공원전망대 집결 시각','event.viewpointTime',e.viewpointTime),field('전망대 집결 장소','event.viewpointPlace',e.viewpointPlace),
+   field('1코스 학무대 집결','event.checkpointTimeByCourse.1',e.checkpointTimeByCourse['1']),
+   field('2코스 학무대 집결','event.checkpointTimeByCourse.2',e.checkpointTimeByCourse['2']),
+   field('3코스 학무대 집결','event.checkpointTimeByCourse.3',e.checkpointTimeByCourse['3']),
+   field('4코스 학무대 집결','event.checkpointTimeByCourse.4',e.checkpointTimeByCourse['4']),
+   field('학무대 장소','event.checkpointPlace',e.checkpointPlace),
+   field('회식 착석 시각','event.dinnerTime',e.dinnerTime),field('회식 장소','event.dinnerPlace',e.dinnerPlace),
    field('가장 위에 띄울 공지','event.announcement',e.announcement,{rows:3,wide:true}),
    field('공통 출발 동선','event.assemblyRoute',e.assemblyRoute,{rows:3,wide:true}),
    field('상행 출발점 카카오맵','event.assemblyStartMapUrl',e.assemblyStartMapUrl,{wide:true}),field('전망대 카카오맵','event.viewpointMapUrl',e.viewpointMapUrl,{wide:true}),
@@ -67,6 +73,17 @@ function make(){
  $('ruleEditors').innerHTML=draft.photoRules.map((s,i)=>field('공통 규칙 '+(i+1),'photoRules.'+i,s,{rows:3})).join('');
  makeCommon();
  makeRoutes();
+ makePlaces();
+}
+function makePlaces(){
+ const labels={parking:'박물관 주차장',store:'석양마루매점',viewpoint:'월미공원전망대',route1:'1코스 전통정원',route2:'2코스 월미산',route3:'3코스 선착장',route4:'4코스 등대',checkpoint:'학무대',dinner:'달빛조개'};
+ $('placeEditors').innerHTML=Object.entries(draft.places||{}).map(([key,p])=>'<section class="mission"><h3>'+escapeHtml(labels[key]||key)+'</h3><div class="fields">'+[
+  field('지도에 표시할 장소명','places.'+key+'.name',p.name),
+  field('위도 (미확인 시 비워둠)','places.'+key+'.lat',p.lat??'',{type:'number',step:'any'}),
+  field('경도 (미확인 시 비워둠)','places.'+key+'.lng',p.lng??'',{type:'number',step:'any'}),
+  field('카카오맵 장소 ID (선택)','places.'+key+'.kakaoPlaceId',p.kakaoPlaceId||''),
+  field('카카오맵 웹 주소 (선택)','places.'+key+'.kakaoUrl',p.kakaoUrl||'',{wide:true})
+ ].join('')+'</div></section>').join('');
 }
 function makeCommon(){
  $('commonMissionEditors').innerHTML=(draft.commonMissions||[]).map((m,i)=>'<section class="mission"><h3>C'+(i+1)+' · 공통 미션</h3><div class="fields">'+[
@@ -95,11 +112,13 @@ function makeRoutes(){
   ${field('주의사항·대체 조건','routes.'+active+'.missions.'+i+'.4',m[4],{rows:2,wide:true})}
   </div></section>`).join('');
 }
-function onChange(ev){const el=ev.target;if(el.dataset.bind){const k=el.dataset.bind;set(k,(k==='requiredMissions'||k==='missionPoints')?Number(el.value):el.value);}else if(el.dataset.routePath){draft.routes[el.dataset.routePath].path=el.value.split('\n').map(x=>x.trim()).filter(Boolean);saveDraft();}}
+function onChange(ev){const el=ev.target;if(el.dataset.bind){const k=el.dataset.bind;if(k==='requiredMissions'||k==='missionPoints')set(k,Number(el.value));else if(/^places\.[^.]+\.(lat|lng)$/.test(k))set(k,el.value.trim()===''?null:Number(el.value));else set(k,el.value);}else if(el.dataset.routePath){draft.routes[el.dataset.routePath].path=el.value.split('\n').map(x=>x.trim()).filter(Boolean);saveDraft();}}
 document.addEventListener('input',onChange);document.addEventListener('change',onChange);
 function validate(){const c=draft;const limits=Object.values(c.routes).map(r=>r.missions.length);if(!Number.isInteger(c.requiredMissions)||c.requiredMissions<1||c.requiredMissions>Math.min(...limits))return '필수 미션 개수는 1~'+Math.min(...limits)+' 사이여야 합니다.';
  if(!Number.isInteger(c.missionPoints)||c.missionPoints<1||c.missionPoints>30)return '미션 배점은 1~30 사이여야 합니다.';
- for(const k of ['meetingTime','checkpointTime','dinnerTime']){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(c.event[k]))return '시간은 14:40처럼 24시간 형식으로 입력해 주세요: '+k;}
+ for(const k of ['parkingTime','meetingTime','viewpointTime','checkpointTime','dinnerTime']){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(c.event[k]))return '시간은 14:40처럼 24시간 형식으로 입력해 주세요: '+k;}
+ for(const n of ['1','2','3','4']){if(!/^([01]\d|2[0-3]):[0-5]\d$/.test(c.event.checkpointTimeByCourse[n]))return n+'코스 학무대 집결 시간을 확인해 주세요.';}
+ for(const [key,p] of Object.entries(c.places||{})){if(!p.name.trim())return key+' 장소명을 입력해 주세요.';if((p.lat===null)!==(p.lng===null))return key+' 좌표는 위도와 경도를 함께 입력하거나 둘 다 비워두세요.';if(p.lat!==null&&(!Number.isFinite(p.lat)||!Number.isFinite(p.lng)||p.lat<33||p.lat>39||p.lng<124||p.lng>132))return key+' 좌표가 국내 범위를 벗어납니다.';}
  if(!c.event.title.trim()||!c.event.checkpointPlace.trim())return '제목과 중간 집결 장소는 비울 수 없습니다.';
  if(!Array.isArray(c.commonMissions)||c.commonMissions.length!==3)return '공통 미션은 3개여야 합니다.';
  for(const m of c.commonMissions){if(!m.title.trim()||!m.description.trim()||!m.format.trim())return '공통 미션 제목·형식·성공 조건을 입력해 주세요.';}
@@ -109,7 +128,7 @@ function formatted(){const err=validate();if(err){status(err,true);return null;}
 async function copy(){const data=formatted();if(data===null)return;try{if(!navigator.clipboard)throw new Error('clipboard');await navigator.clipboard.writeText(data);}catch{const ta=document.createElement('textarea');ta.value=data;ta.style.position='fixed';ta.style.top='-1000px';document.body.append(ta);ta.select();const ok=document.execCommand('copy');ta.remove();if(!ok){status('복사 권한이 제한되어 있습니다. 설정 파일 다운로드를 이용해 주세요.',true);return;}}status('설정 코드를 복사했습니다. GitHub의 settings.js 편집창에서 기존 내용을 모두 지우고 붙여넣은 뒤 커밋하세요.');}
 function download(){const data=formatted();if(data===null)return;const blob=new Blob([data],{type:'text/javascript;charset=utf-8'}),url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='settings.js';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),5000);status('settings.js 파일을 다운로드했습니다. GitHub에서 동일 파일을 교체하세요.');}
 $('copyConfig').addEventListener('click',copy);$('bottomCopy').addEventListener('click',copy);$('downloadConfig').addEventListener('click',download);$('bottomDownload').addEventListener('click',download);
-$('restoreDraft').addEventListener('click',()=>{try{const v=JSON.parse(sessionStorage.getItem('wolmi_admin_draft_v2')||'null');if(v&&v.event&&v.routes&&Array.isArray(v.commonMissions)&&v.commonMissions.length===3){draft=v;make();status('이 브라우저에 남아 있던 임시 수정본을 불러왔습니다.');}else{status('복원할 임시 수정본이 없습니다.',true);}}catch{status('임시 수정본이 손상되었습니다.',true);}});
+$('restoreDraft').addEventListener('click',()=>{try{const v=JSON.parse(sessionStorage.getItem('wolmi_admin_draft_v2')||'null');if(v&&v.event&&v.routes&&v.places&&v.event.checkpointTimeByCourse&&Array.isArray(v.commonMissions)&&v.commonMissions.length===3){draft=v;make();status('이 브라우저에 남아 있던 임시 수정본을 불러왔습니다.');}else{status('복원할 임시 수정본이 없습니다.',true);}}catch{status('임시 수정본이 손상되었습니다.',true);}});
 $('resetLive').addEventListener('click',()=>{if(!confirm('임시 수정사항을 버리고 현재 공개된 설정을 다시 불러올까요?'))return;draft=JSON.parse(JSON.stringify(original));make();saveDraft();status('공개 설정으로 돌아왔습니다.');});
 function guessRepo(){const host=location.hostname;if(host.endsWith('.github.io')){const owner=host.slice(0,-'.github.io'.length);const bits=location.pathname.split('/').filter(Boolean);$('repo').value=owner+'/'+(bits[0]&&bits[0]!=='editor.html'?bits[0]:owner+'.github.io');}updateLink();}
 function updateLink(){const repo=$('repo').value.trim();const branch=$('branch').value.trim()||'main';const a=$('openGitHub');if(/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repo)){a.href='https://github.com/'+repo+'/edit/'+encodeURIComponent(branch)+'/settings.js';$('editLinkHint').textContent='설정 파일 주소: '+repo+' / '+branch+' / settings.js';}else{a.href='https://github.com';$('editLinkHint').textContent='저장소 이름을 “계정명/저장소명”으로 입력하면 바로 편집 링크가 만들어집니다.';}}
