@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
   "version": "2.3",
-  "updatedAt": "2026-10-12 10:50",
+  "updatedAt": "2026-10-12 11:00",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -396,8 +396,9 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "17408866",
       "kakaoUrl": "https://place.map.kakao.com/17408866",
-      "source": "카카오맵 장소 ID",
-      "travelMode": "walk"
+      "source": "사용자가 제공한 구글지도 링크 · 좌표 미추출",
+      "travelMode": "walk",
+      "googleUrl": "https://maps.app.goo.gl/hQem6DBBXcnGCcZn8?g_st=ac"
     },
     "route2": {
       "name": "월미산정상",
@@ -405,8 +406,9 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "17556404",
       "kakaoUrl": "https://place.map.kakao.com/17556404",
-      "source": "카카오맵 장소 ID",
-      "travelMode": "walk"
+      "source": "사용자가 제공한 구글지도 링크 · 좌표 미추출",
+      "travelMode": "walk",
+      "googleUrl": "https://maps.app.goo.gl/gRgiWxzMZhAR4hx46?g_st=ac"
     },
     "route3": {
       "name": "월미도선착장",
@@ -453,8 +455,9 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "45078266",
       "kakaoUrl": "https://place.map.kakao.com/45078266",
-      "source": "카카오맵 장소 ID",
-      "travelMode": "walk"
+      "source": "사용자가 제공한 구글지도 링크 · 좌표 미추출",
+      "travelMode": "walk",
+      "googleUrl": "https://maps.app.goo.gl/D2s94YC2TCtEHQNK9?g_st=ac"
     }
   }
 };
