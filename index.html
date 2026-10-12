@@ -101,7 +101,7 @@
     <section class="section" id="maps">
       <div class="section-heading"><div><div class="eyebrow">04 · TOUR MAP</div><h2>지도 보면서 찾아가기</h2></div><span class="hint">눌러서 확대</span></div>
       <div class="maptiles" id="mapTiles"></div>
-      <div class="actions"><a class="secondary" id="kakaoMapLink" href="https://map.kakao.com" target="_blank" rel="noopener noreferrer">카카오맵에서 위치 확인 ↗</a></div>
+      <div class="actions"><button class="secondary" type="button" data-place="viewpoint">월미공원전망대 · 지도앱 선택 ↗</button></div>
       <p class="footnote">지도: 월미공원 관광안내 자료 참고. 산책로 운영·통제 여부는 현장 안내 우선.<br>공개 배포 시 지도 원본의 재배포 조건을 확인하세요.</p>
     </section>
     <section class="section" id="guide">
@@ -148,7 +148,7 @@ function urlsForPlace(p){
  const appname=enc(location.origin+location.pathname),mode=p.travelMode==='car'?'car':'walk';
  const nativeKakao=has?(mode==='car'?'kakaomap://route?ep='+coord+'&by=car':'kakaomap://look?p='+coord):(p.kakaoPlaceId?'kakaomap://place?id='+enc(p.kakaoPlaceId):'kakaomap://search?q='+enc(name));
  const nativeNaver=has?(mode==='car'?'nmap://navigation?dlat='+p.lat+'&dlng='+p.lng+'&dname='+enc(name)+'&appname='+appname:'nmap://place?lat='+p.lat+'&lng='+p.lng+'&name='+enc(name)+'&appname='+appname):'nmap://search?query='+enc(name)+'&appname='+appname;
- const kakaoWeb=validUrl(p.kakaoUrl)||(has?'https://map.kakao.com/link/map/'+enc(name)+','+coord:'https://map.kakao.com/link/search/'+enc(name));
+ const kakaoWeb=(p.kakaoUrl&&validUrl(p.kakaoUrl)!=='#')?validUrl(p.kakaoUrl):(has?'https://map.kakao.com/link/map/'+enc(name)+','+coord:'https://map.kakao.com/link/search/'+enc(name));
  const naverWeb='https://map.naver.com/p/search/'+enc(name);
  const googleWeb=mode==='car'&&has?'https://www.google.com/maps/dir/?api=1&destination='+coord+'&travelmode=driving':'https://www.google.com/maps/search/?api=1&query='+enc(has?coord:name);
  return {kakao:nativeKakao,naver:nativeNaver,google:googleWeb,kakaoWeb,naverWeb};
@@ -202,7 +202,6 @@ function start(){
   text('checkpointNotice',e.eventFlow||'중간 집결 후 경쟁전을 진행합니다.');text('submissionNotice',e.photoSubmission+' '+e.contactMessage);
   text('missionCountHint',c.routes['1'].missions.length+'개 중 '+count()+'개 선택');
   text('bottomMissionLink',count()+'개 미션');text('footerText',(e.title||'월미도')+' · 최종 안내는 운영진 공지 기준');
-  $('kakaoMapLink').href=validUrl(e.kakaoMapUrl||'https://map.kakao.com');
   $('rulesList').innerHTML=(c.photoRules||[]).map(s=>'<li>'+html(s)+'</li>').join('');
   $('mapTiles').innerHTML=(c.mapInfo||[]).map((m,i)=>`<article class="maptile"><img src="${html(m.file)}" alt="${html(m.title)}" data-map="${i}" loading="lazy"><div class="mapfooter"><div><strong>${html(m.title)}</strong><small>${html(m.description)}</small></div><button class="viewbtn" type="button" data-map="${i}">확대 보기 ↗</button></div></article>`).join('');
   $('mapTiles').querySelectorAll('[data-map]').forEach(x=>x.addEventListener('click',()=>openMap(Number(x.dataset.map))));
