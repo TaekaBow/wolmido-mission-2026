@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
-  "version": "2.3",
-  "updatedAt": "2026-10-12 11:00",
+  "version": "2.4",
+  "updatedAt": "2026. 10. 12. 10:35",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -33,7 +33,7 @@ window.WOLMI_CONFIG = {
     "assemblyStartMapUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
     "parkingLabel": "주차",
     "parkingTime": "14:40",
-    "parkingPlace": "국립인천해양박물관 주차장 (월미로 294)",
+    "parkingPlace": "국립인천해양박물관 주차장 (월미로 294) · 지도 핀은 박물관 건물 기준, 진입로 별도 확인",
     "viewpointLabel": "전망대 집결",
     "viewpointTime": "15:20",
     "viewpointPlace": "월미공원전망대",
@@ -354,17 +354,19 @@ window.WOLMI_CONFIG = {
   "places": {
     "parking": {
       "name": "국립인천해양박물관 주차장",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4702125,
+      "lng": 126.595765625,
       "kakaoPlaceId": "",
       "kakaoUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20294",
-      "source": "사용자가 지정한 구글지도 장소 링크 · 좌표 미추출",
-      "travelMode": "car",
-      "provisionalCoordinates": [
-        37.47012,
-        126.59694
-      ],
-      "googleUrl": "https://maps.app.goo.gl/Zbm7DuuZ9Ys61cDM9?g_st=ac"
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FHCW+38J) 변환 좌표 · 박물관 건물 위치(주차장 진입로 미검증)",
+      "travelMode": "view",
+      "googleUrl": "https://maps.app.goo.gl/Zbm7DuuZ9Ys61cDM9?g_st=ac",
+      "plusCode": "8Q98FHCW+38J",
+      "googlePlaceName": "Incheon National Maritime Museum",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched",
+      "locationNote": "박물관 건물 핀 기준. 실제 주차장 진입로 확인 필요."
     },
     "store": {
       "name": "석양마루매점",
@@ -372,92 +374,123 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "",
       "kakaoUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
-      "source": "사용자가 지정한 구글지도 장소 · 버스정류장 옆 석양마루매점 · 좌표 미추출",
+      "source": "입력받은 Google Maps 공유링크가 'Wolmi Theme Park'를 가리켜 좌표 미적용. 정확한 석양마루매점 위치 확인 필요.",
       "travelMode": "walk",
       "provisionalCoordinates": [
         37.4701481430491,
         126.60027502583
       ],
-      "googleUrl": "https://maps.app.goo.gl/dgadmhchu4jBMopc6?g_st=ac"
+      "googleUrl": "https://www.google.com/maps/search/?api=1&query=%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
+      "rejectedGoogleUrl": "https://maps.app.goo.gl/dgadmhchu4jBMopc6?g_st=ac",
+      "googleLinkStatus": "mismatch_search_fallback"
     },
     "viewpoint": {
       "name": "월미공원전망대",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4695875,
+      "lng": 126.605265625,
       "kakaoPlaceId": "17811732",
       "kakaoUrl": "https://place.map.kakao.com/17811732",
-      "source": "카카오맵 장소 ID + 사용자가 제공한 Google 지도 링크 · 좌표 확인 대기",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FJ94+R4J) 변환 좌표",
       "travelMode": "walk",
-      "googleUrl": "https://maps.app.goo.gl/U9iyfLQNsDVURPCC9"
+      "googleUrl": "https://maps.app.goo.gl/U9iyfLQNsDVURPCC9",
+      "plusCode": "8Q98FJ94+R4J",
+      "googlePlaceName": "Wolmi Observatory",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched"
     },
     "route1": {
       "name": "월미전통정원",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4749875,
+      "lng": 126.604703125,
       "kakaoPlaceId": "17408866",
       "kakaoUrl": "https://place.map.kakao.com/17408866",
-      "source": "사용자가 제공한 구글지도 링크 · 좌표 미추출",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FJF3+XVW) 변환 좌표",
       "travelMode": "walk",
-      "googleUrl": "https://maps.app.goo.gl/hQem6DBBXcnGCcZn8?g_st=ac"
+      "googleUrl": "https://maps.app.goo.gl/hQem6DBBXcnGCcZn8?g_st=ac",
+      "plusCode": "8Q98FJF3+XVW",
+      "googlePlaceName": "월미전통공원",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched",
+      "locationNote": "구글지도 장소명: 월미전통공원 (전통정원 대표 지점)"
     },
     "route2": {
       "name": "월미산정상",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4722625,
+      "lng": 126.602890625,
       "kakaoPlaceId": "17556404",
       "kakaoUrl": "https://place.map.kakao.com/17556404",
-      "source": "사용자가 제공한 구글지도 링크 · 좌표 미추출",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FJC3+W52) 변환 좌표",
       "travelMode": "walk",
-      "googleUrl": "https://maps.app.goo.gl/gRgiWxzMZhAR4hx46?g_st=ac"
+      "googleUrl": "https://maps.app.goo.gl/gRgiWxzMZhAR4hx46?g_st=ac",
+      "plusCode": "8Q98FJC3+W52",
+      "googlePlaceName": "월미산 정상",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched"
     },
     "route3": {
       "name": "월미도선착장",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4757625,
+      "lng": 126.597078125,
       "kakaoPlaceId": "17805923",
       "kakaoUrl": "https://place.map.kakao.com/17805923",
-      "source": "사용자가 지정한 구글지도 장소 링크 · 좌표 미추출",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FHGW+8R4) 변환 좌표",
       "travelMode": "walk",
-      "provisionalCoordinates": [
-        37.47561,
-        126.59747
-      ],
-      "googleUrl": "https://maps.app.goo.gl/zE4aRNxDr55td7tM8?g_st=ac"
+      "googleUrl": "https://maps.app.goo.gl/zE4aRNxDr55td7tM8?g_st=ac",
+      "plusCode": "8Q98FHGW+8R4",
+      "googlePlaceName": "월미도 여객선 선착장(영종도행)",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched",
+      "locationNote": "구글지도 장소명: 월미도 여객선 선착장(영종도행)"
     },
     "route4": {
       "name": "월미도등대",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4689375,
+      "lng": 126.594828125,
       "kakaoPlaceId": "1550030810",
       "kakaoUrl": "https://place.map.kakao.com/1550030810",
-      "source": "사용자가 지정한 구글지도 장소 링크 · 좌표 미추출",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FH9V+HWG) 변환 좌표",
       "travelMode": "walk",
-      "provisionalCoordinates": [
-        37.46892,
-        126.59489
-      ],
-      "googleUrl": "https://maps.app.goo.gl/F8fSkXgP1K4T2AzC6?g_st=ac"
+      "googleUrl": "https://maps.app.goo.gl/F8fSkXgP1K4T2AzC6?g_st=ac",
+      "plusCode": "8Q98FH9V+HWG",
+      "googlePlaceName": "Wolmido Lighthouse",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched"
     },
     "checkpoint": {
       "name": "월미도학공연장(학무대)",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4718125,
+      "lng": 126.595703125,
       "kakaoPlaceId": "592954764",
       "kakaoUrl": "https://place.map.kakao.com/592954764",
-      "source": "사용자가 지정한 월미도학공연장 구글지도 링크 · 좌표 미추출",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FHCW+P7G) 변환 좌표",
       "travelMode": "walk",
       "unverifiedPlusCode": "FHCW+P7 서구 인천광역시",
-      "googleUrl": "https://maps.app.goo.gl/swba78p5eb1oGTQ79?g_st=ac"
+      "googleUrl": "https://maps.app.goo.gl/swba78p5eb1oGTQ79?g_st=ac",
+      "plusCode": "8Q98FHCW+P7G",
+      "googlePlaceName": "월미도 문화의 거리 야외공연장(학공연장)",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched"
     },
     "dinner": {
       "name": "달빛조개",
-      "lat": null,
-      "lng": null,
+      "lat": 37.4727375,
+      "lng": 126.596484375,
       "kakaoPlaceId": "45078266",
       "kakaoUrl": "https://place.map.kakao.com/45078266",
-      "source": "사용자가 제공한 구글지도 링크 · 좌표 미추출",
+      "source": "사용자 제공 구글지도 링크의 장소정보 Plus Code(8Q98FHFW+3HX) 변환 좌표",
       "travelMode": "walk",
-      "googleUrl": "https://maps.app.goo.gl/D2s94YC2TCtEHQNK9?g_st=ac"
+      "googleUrl": "https://maps.app.goo.gl/D2s94YC2TCtEHQNK9?g_st=ac",
+      "plusCode": "8Q98FHFW+3HX",
+      "googlePlaceName": "달빛조개",
+      "locationMethod": "Google Maps expanded URL Plus Code center (WGS84)",
+      "coordinatePrecision": "11-digit Plus Code (approx. 3m cell)",
+      "googleLinkStatus": "place_matched"
     }
   }
 };
