@@ -150,7 +150,7 @@ function urlsForPlace(p){
  const nativeNaver=has?(mode==='car'?'nmap://navigation?dlat='+p.lat+'&dlng='+p.lng+'&dname='+enc(name)+'&appname='+appname:'nmap://place?lat='+p.lat+'&lng='+p.lng+'&name='+enc(name)+'&appname='+appname):'nmap://search?query='+enc(name)+'&appname='+appname;
  const kakaoWeb=(p.kakaoUrl&&validUrl(p.kakaoUrl)!=='#')?validUrl(p.kakaoUrl):(has?'https://map.kakao.com/link/map/'+enc(name)+','+coord:'https://map.kakao.com/link/search/'+enc(name));
  const naverWeb='https://map.naver.com/p/search/'+enc(name);
- const googleWeb=mode==='car'&&has?'https://www.google.com/maps/dir/?api=1&destination='+coord+'&travelmode=driving':'https://www.google.com/maps/search/?api=1&query='+enc(has?coord:name);
+ const googleWeb=p.googleUrl&&validUrl(p.googleUrl)!=='#'?validUrl(p.googleUrl):(mode==='car'&&has?'https://www.google.com/maps/dir/?api=1&destination='+coord+'&travelmode=driving':'https://www.google.com/maps/search/?api=1&query='+enc(has?coord:name));
  return {kakao:nativeKakao,naver:nativeNaver,google:googleWeb,kakaoWeb,naverWeb};
 }
 function openPlaceChooser(key){
