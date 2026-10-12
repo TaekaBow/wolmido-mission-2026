@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
   "version": "2.5",
-  "updatedAt": "2026. 10. 12. 최종 안내",
+  "updatedAt": "2026. 10. 12. 후발대 추가 반영",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -47,7 +47,7 @@ window.WOLMI_CONFIG = {
     "activityBudgetRule": "팀별 10만 원 한도 내 간식·음료 등 자유롭게 사용하세요. 결제 영수증은 반드시 챙겨 주세요.",
     "teamLeaderRule": "이동 중 팀장을 상의하고, 서로 떨어져 이동하는 팀원은 카카오톡으로 의견을 모아 14:50 석양마루매점 집결 시 최종 확정합니다.",
     "meetingRule": "14:40까지 국립인천해양박물관 주차 완료 → 14:50 석양마루매점 앞 집결 → 15:20 월미공원전망대 단체사진 및 코스 추첨",
-    "lateArrivalNotice": "장호준 책임은 후발대로 B팀에 합류합니다.",
+    "lateArrivalNotice": "김관우 주임과 장호준 책임은 후발대로 B팀에 합류합니다.",
     "dinnerOnlyNotice": "경영지원팀은 하성선 책임만 야유회에 참가하며, 하상민 팀장님을 포함한 나머지 인원은 17:30 달빛조개 저녁 식사부터 합류합니다."
   },
   "requiredMissions": 3,
@@ -521,6 +521,7 @@ window.WOLMI_CONFIG = {
       ],
       "cardHolder": "노현석 수석",
       "lateArrivals": [
+        "김관우",
         "장호준"
       ]
     },
