@@ -43,8 +43,6 @@ window.WOLMI_CONFIG = {
       "3": "16:30",
       "4": "16:30"
     },
-    "groupChatUrl": "https://invite.kakao.com/tc/9qbVjML6zm",
-    "groupChatNotice": "전체 공지용 카카오톡 채팅방에 입장해 주세요. 집결 변경·코스별 안내·인증 제출은 공지방에서 확인합니다.",
     "activityBudgetPerTeam": 100000,
     "activityBudgetRule": "팀별 10만 원 한도 내 간식·음료 등 자유롭게 사용하세요. 결제 영수증은 반드시 챙겨 주세요.",
     "teamLeaderRule": "이동 중 팀장을 상의하고, 서로 떨어져 이동하는 팀원은 카카오톡으로 의견을 모아 14:50 석양마루매점 집결 시 최종 확정합니다.",
