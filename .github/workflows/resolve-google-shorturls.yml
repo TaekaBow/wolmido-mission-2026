@@ -1,0 +1,64 @@
+name: One-time Google Maps shortlink coordinate check
+on:
+  push:
+    paths:
+      - '.github/workflows/resolve-google-shorturls.yml'
+permissions:
+  contents: write
+jobs:
+  resolve:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Inspect nine Google Maps links
+        run: |
+          python - <<'PY'
+          import json, re, urllib.request, urllib.parse, urllib.error
+          from datetime import datetime, timezone
+          links = {
+              "parking": "https://maps.app.goo.gl/Zbm7DuuZ9Ys61cDM9?g_st=ac",
+              "store": "https://maps.app.goo.gl/dgadmhchu4jBMopc6?g_st=ac",
+              "viewpoint": "https://maps.app.goo.gl/U9iyfLQNsDVURPCC9",
+              "route1": "https://maps.app.goo.gl/hQem6DBBXcnGCcZn8?g_st=ac",
+              "route2": "https://maps.app.goo.gl/gRgiWxzMZhAR4hx46?g_st=ac",
+              "route3": "https://maps.app.goo.gl/zE4aRNxDr55td7tM8?g_st=ac",
+              "route4": "https://maps.app.goo.gl/F8fSkXgP1K4T2AzC6?g_st=ac",
+              "checkpoint": "https://maps.app.goo.gl/swba78p5eb1oGTQ79?g_st=ac",
+              "dinner": "https://maps.app.goo.gl/D2s94YC2TCtEHQNK9?g_st=ac",
+          }
+          results={}
+          for key,short in links.items():
+              result={"short_url":short}
+              try:
+                  request=urllib.request.Request(short,headers={"User-Agent":"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/120 Safari/537.36","Accept-Language":"ko-KR,ko;q=0.9,en;q=0.5"})
+                  with urllib.request.urlopen(request,timeout=13) as response:
+                      destination=response.geturl()
+                      body=response.read(1500000).decode("utf-8","replace")
+                  result["resolved_url"]=destination
+                  result["http"]="ok"
+                  combined=urllib.parse.unquote(destination)+" "+urllib.parse.unquote(body[:200000])
+                  exact=re.search(r"!3d(3[6-8]\.\d{4,})!4d(12[5-8]\.\d{4,})",combined)
+                  center=re.search(r"@([3][6-8]\.\d{4,}),(12[5-8]\.\d{4,})",combined)
+                  if exact:
+                      result["place_pin_lat"]=float(exact.group(1))
+                      result["place_pin_lng"]=float(exact.group(2))
+                  if center:
+                      result["map_center_lat"]=float(center.group(1))
+                      result["map_center_lng"]=float(center.group(2))
+                  if not exact and not center:
+                      result["preview"]=re.sub(r"\s+"," ",body[:250]).strip()
+              except Exception as e:
+                  result["error"]=str(e)[:400]
+              results[key]=result
+              print("MAP_RESULT",key,json.dumps(result,ensure_ascii=False)[:3000],flush=True)
+          output={"generated":datetime.now(timezone.utc).isoformat(),"source":"Google Maps shortlink redirects (GitHub Actions)","results":results}
+          with open("map_resolution_results.json","w",encoding="utf-8") as f:json.dump(output,f,ensure_ascii=False,indent=2)
+          PY
+      - name: Save coordinate inspection report
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add map_resolution_results.json
+          git commit -m "chore: temporary Google Maps redirect coordinate lookup"
+          git push
