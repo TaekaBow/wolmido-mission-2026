@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
-  "version": "2.5",
-  "updatedAt": "2026. 10. 12. 김관우 정시 출발 반영",
+  "version": "2.6",
+  "updatedAt": "2026. 10. 12. 팀장·코스 최종 확정",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -15,8 +15,8 @@ window.WOLMI_CONFIG = {
     "dinnerTime": "17:30",
     "dinnerPlace": "달빛조개 · 인천 제물포구 월미문화로 65",
     "assemblyRoute": "석양마루매점(인천 제물포구 월미로 329) → 돈대삼거리 → 월미산둘레길(남측) → 전망대길(데크계단) → 월미공원전망대",
-    "announcement": "14:50 석양마루매점 앞 집결, 15:20 월미공원전망대 코스 추첨. 학무대는 1·2코스 16:50, 3·4코스 16:30까지 도착하세요. 안전이 최우선입니다.",
-    "eventFlow": "14:40 국립인천해양박물관 주차 완료 → 14:50 석양마루매점 앞 집결·팀장 확정 → 15:20 월미공원전망대 단체사진·코스 추첨 → 15:30경 코스별 미션 → 3·4코스 16:30 / 1·2코스 16:50 학무대 집결 → 이후 현장 단체 프로그램(운영진 공지) → 17:30 달빛조개 전원 착석",
+    "announcement": "팀별 코스 확정! A팀 4코스·B팀 2코스·C팀 3코스·D팀 1코스. 학무대 집결은 1·2코스 16:50 / 3·4코스 16:30입니다. 안전을 최우선으로 이동해 주세요.",
+    "eventFlow": "14:40 국립인천해양박물관 주차 완료 → 14:50 석양마루매점 앞 집결 → 15:20 월미공원전망대 단체사진 및 확정 코스 출발 → 코스별 미션 → 3·4코스 16:30 / 1·2코스 16:50 학무대 집결 → 이후 현장 단체 프로그램(운영진 공지) → 17:30 달빛조개 전원 착석",
     "kakaoMapUrl": "https://kko.to/3eZNrnEfUp",
     "photoSubmission": "공통 미션 3개와 선택한 코스 미션의 사진·영상은 지정된 카카오톡 단체 채팅방에 제출해 주세요.",
     "contactMessage": "긴급 상황은 팀 리더 또는 운영진에게 바로 연락해 주세요.",
@@ -45,7 +45,7 @@ window.WOLMI_CONFIG = {
     },
     "activityBudgetPerTeam": 100000,
     "activityBudgetRule": "팀별 10만 원 한도 내 간식·음료 등 자유롭게 사용하세요. 결제 영수증은 반드시 챙겨 주세요.",
-    "teamLeaderRule": "이동 중 팀장을 상의하고, 서로 떨어져 이동하는 팀원은 카카오톡으로 의견을 모아 14:50 석양마루매점 집결 시 최종 확정합니다.",
+    "teamLeaderRule": "팀장 및 코스 배정이 확정되었습니다. 각 팀은 지정 코스에서 미션을 수행하고, 학무대 집결 시간을 반드시 지켜 주세요.",
     "meetingRule": "14:40까지 국립인천해양박물관 주차 완료 → 14:50 석양마루매점 앞 집결 → 15:20 월미공원전망대 단체사진 및 코스 추첨",
     "lateArrivalNotice": "장호준 책임만 A팀에 후발 합류합니다. 김관우 주임은 B팀에서 정시 출발합니다.",
     "dinnerOnlyNotice": "경영지원팀은 하성선 책임만 야유회에 참가하며, 하상민 팀장님을 포함한 나머지 인원은 17:30 달빛조개 저녁 식사부터 합류합니다."
@@ -511,7 +511,9 @@ window.WOLMI_CONFIG = {
       "cardHolder": "김인호 수석",
       "lateArrivals": [
         "장호준"
-      ]
+      ],
+      "leader": "황정은",
+      "assignedCourse": "4"
     },
     "B": {
       "members": [
@@ -522,7 +524,9 @@ window.WOLMI_CONFIG = {
         "하성선"
       ],
       "cardHolder": "노현석 수석",
-      "lateArrivals": []
+      "lateArrivals": [],
+      "leader": "류다현",
+      "assignedCourse": "2"
     },
     "C": {
       "members": [
@@ -533,7 +537,9 @@ window.WOLMI_CONFIG = {
         "박지연"
       ],
       "cardHolder": "백지승 수석",
-      "lateArrivals": []
+      "lateArrivals": [],
+      "leader": "김현철",
+      "assignedCourse": "3"
     },
     "D": {
       "members": [
@@ -544,7 +550,9 @@ window.WOLMI_CONFIG = {
         "김도현"
       ],
       "cardHolder": "홍기택 법인카드(운영진)",
-      "lateArrivals": []
+      "lateArrivals": [],
+      "leader": "고영태",
+      "assignedCourse": "1"
     }
   }
 };
