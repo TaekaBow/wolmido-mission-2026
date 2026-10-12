@@ -139,9 +139,59 @@ function setCommonDone(a){try{localStorage.setItem(commonKey(),JSON.stringify(a)
 function getSelected(n){let arr=[];try{arr=JSON.parse(localStorage.getItem(selectionKey(n))||'[]');}catch{}const length=cfg.routes[n].missions.length;return Array.isArray(arr)?[...new Set(arr)].filter(x=>Number.isInteger(x)&&x>=0&&x<length).slice(0,count()):[];}
 function setSelected(n,arr){try{localStorage.setItem(selectionKey(n),JSON.stringify(arr));}catch{}}
 function validUrl(u){try{const v=new URL(u,location.href);return (v.protocol==='https:'||v.protocol==='http:')?v.href:'#';}catch{return '#';}}
+
+let activePlaceKey=null;
+let currentMapLinks={};
+function isMappedCoordinate(p){return !!p&&typeof p.lat==='number'&&typeof p.lng==='number'&&Number.isFinite(p.lat)&&Number.isFinite(p.lng)&&p.lat>=33&&p.lat<=39&&p.lng>=124&&p.lng<=132;}
+function urlsForPlace(p){
+ const enc=encodeURIComponent,has=isMappedCoordinate(p),name=String(p.name||'목적지'),coord=has?p.lat+','+p.lng:'';
+ const appname=enc(location.origin+location.pathname),mode=p.travelMode==='car'?'car':'walk';
+ const nativeKakao=has?(mode==='car'?'kakaomap://route?ep='+coord+'&by=car':'kakaomap://look?p='+coord):(p.kakaoPlaceId?'kakaomap://place?id='+enc(p.kakaoPlaceId):'kakaomap://search?q='+enc(name));
+ const nativeNaver=has?(mode==='car'?'nmap://navigation?dlat='+p.lat+'&dlng='+p.lng+'&dname='+enc(name)+'&appname='+appname:'nmap://place?lat='+p.lat+'&lng='+p.lng+'&name='+enc(name)+'&appname='+appname):'nmap://search?query='+enc(name)+'&appname='+appname;
+ const kakaoWeb=validUrl(p.kakaoUrl)||(has?'https://map.kakao.com/link/map/'+enc(name)+','+coord:'https://map.kakao.com/link/search/'+enc(name));
+ const naverWeb='https://map.naver.com/p/search/'+enc(name);
+ const googleWeb=mode==='car'&&has?'https://www.google.com/maps/dir/?api=1&destination='+coord+'&travelmode=driving':'https://www.google.com/maps/search/?api=1&query='+enc(has?coord:name);
+ return {kakao:nativeKakao,naver:nativeNaver,google:googleWeb,kakaoWeb,naverWeb};
+}
+function openPlaceChooser(key){
+ const place=(cfg&&cfg.places||{})[key];if(!place){notice('해당 장소의 지도 정보를 찾지 못했습니다.');return;}
+ activePlaceKey=key;currentMapLinks=urlsForPlace(place);text('mapChoiceTitle',place.name);
+ text('mapChoiceDescription',isMappedCoordinate(place)?'위도 '+place.lat+' / 경도 '+place.lng+' · 지도앱을 선택하세요.':'정확한 좌표가 확인되지 않은 장소입니다. 카카오 장소정보 또는 네이버 검색으로 연결합니다.');
+ $('kakaoWebFallback').href=currentMapLinks.kakaoWeb;$('naverWebFallback').href=currentMapLinks.naverWeb;
+ try{$('mapChooser').showModal();}catch{window.open(currentMapLinks.kakaoWeb,'_blank','noopener');}
+}
+document.addEventListener('click',ev=>{const el=ev.target.closest('[data-place]');if(el){ev.preventDefault();openPlaceChooser(el.getAttribute('data-place'));}});
+$('mapChooser').querySelectorAll('[data-provider]').forEach(btn=>btn.addEventListener('click',()=>{
+ const which=btn.dataset.provider,uri=currentMapLinks[which];if(!uri)return;
+ if(which==='google'){window.open(uri,'_blank','noopener');return;}
+ notice('앱이 실행되지 않으면 아래 웹 지도 버튼을 눌러 주세요.');
+ window.location.href=uri;
+}));
+$('closeMapChooser').addEventListener('click',()=>$('mapChooser').close());
+$('mapChooser').addEventListener('click',ev=>{if(ev.target===$('mapChooser'))$('mapChooser').close();});
+$('copyPlace').addEventListener('click',()=>{const p=(cfg&&cfg.places||{})[activePlaceKey];if(!p)return;copy(p.name+(isMappedCoordinate(p)?' · '+p.lat+', '+p.lng:'')+'\n'+currentMapLinks.kakaoWeb);});
+function initBrowserOpening(){
+ const ua=navigator.userAgent||'',isKakao=/KAKAOTALK/i.test(ua),isAndroid=/Android/i.test(ua);
+ $('kakaoBrowserBanner').classList.toggle('hidden',!isKakao);
+ $('openChrome').classList.toggle('hidden',!(isKakao&&isAndroid));
+}
+$('openExternalBrowser').addEventListener('click',()=>{
+ if(!/KAKAOTALK/i.test(navigator.userAgent||'')){window.open(location.href,'_blank','noopener');return;}
+ notice('전환되지 않으면 우측 메뉴에서 다른 브라우저로 열거나 주소를 복사하세요.');
+ window.location.href='kakaotalk://web/openExternal?url='+encodeURIComponent(location.href);
+});
+$('openChrome').addEventListener('click',()=>{
+ const u=new URL(location.href),fallback=encodeURIComponent(u.href);
+ const intent='intent://'+u.host+u.pathname+u.search+u.hash+'#Intent;scheme=https;package=com.android.chrome;S.browser_fallback_url='+fallback+';end';
+ notice('Chrome이 실행되지 않으면 주소 복사를 사용하세요.');
+ window.location.href=intent;
+});
+$('copyPageLink').addEventListener('click',()=>copy(location.href));
+
 function start(){
   const c=window.WOLMI_CONFIG;if(!c||!c.event||!c.routes||!Object.keys(c.routes).length){notice('행사 설정을 읽을 수 없습니다.');return;}
   cfg=c;const e=c.event;document.title=(e.title||'월미도 미션지')+' · 모바일 미션지';
+  initBrowserOpening();
   text('kicker','WOLMIDO MISSION TOUR / '+(e.dateLabel||''));text('eventTitle',e.title);text('eventSubtitle',e.subtitle);
   ['parking','meeting','viewpoint'].forEach(n=>{text(n+'Label',e[n+'Label']);text(n+'Time',e[n+'Time']);});
   text('lastUpdated',c.updatedAt?'· 안내 갱신 '+c.updatedAt:'');
