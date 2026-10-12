@@ -46,6 +46,17 @@
     .bottomnav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(100%,620px);z-index:5;background:#fffffffa;border-top:1px solid #e6e6df;display:grid;grid-template-columns:repeat(4,1fr);padding:9px 10px calc(8px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px #0f14140e}.bottomnav a{text-align:center;font-size:12px;font-weight:780;padding:9px 4px;border-radius:10px;color:#52646c}.bottomnav a:hover{background:#eaf3f1;color:#126875}
     .hidden{display:none!important}.toaster{position:fixed;bottom:94px;left:50%;transform:translateX(-50%);max-width:calc(100% - 50px);background:#1e303c;color:#fff;font-size:12px;border-radius:12px;padding:11px 15px;z-index:20;box-shadow:0 4px 16px #0003;pointer-events:none;opacity:0;transition:opacity .2s}.toaster.show{opacity:1}
     dialog.viewer{margin:0;max-width:none;max-height:none;width:100vw;height:100dvh;inset:0;border:0;background:#f5f6f4;padding:0;overflow:hidden}dialog.viewer::backdrop{background:#091820cf}dialog.viewer .toolbar{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 15px;background:#fff;border-bottom:1px solid #ddd;min-height:60px}dialog.viewer strong{font-size:14px}dialog.viewer button{border:1px solid #d4d7d4;border-radius:10px;background:#fff;padding:8px 12px;min-height:40px;font-weight:770}.tools{display:flex;gap:6px}.pan{height:calc(100dvh - 60px);overflow:auto;touch-action:pan-x pan-y;overscroll-behavior:contain}.pan img{display:block;max-width:none;width:100%;height:auto;margin:auto}
+    .teamOptions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+    .teamOption{min-height:49px;padding:9px 5px;border:1.5px solid #d8e2de;border-radius:12px;background:#fff;color:#26505a;font-size:15px;font-weight:850}
+    .teamOption.active{background:#147178;border-color:#147178;color:#fff}
+    .teamBrief{margin-top:10px;padding:15px;background:#eaf5f1;border:1px solid #c7ddd6;border-radius:16px}
+    .teamBrief h3{margin:0 0 5px;font-size:19px}.teamBrief p{font-size:13px;line-height:1.7;margin:5px 0}
+    .teamBudget{margin-top:9px;padding:10px 12px;border-radius:10px;background:#fff;font-size:13px;line-height:1.65}
+    .compactDetails{margin-top:10px;border:1px solid #e1e6e2;background:#fff;border-radius:13px;padding:11px 13px}
+    .compactDetails summary{cursor:pointer;min-height:28px;font-size:13px;font-weight:800;color:#315c64}
+    .compactLine{font-size:13px;line-height:1.65;padding:9px 0;border-top:1px solid #e9ebe8}
+    .compactLine:first-of-type{margin-top:8px}.compactLine strong{display:block}
+    .compactLine span{color:#596b72}#teamSection{scroll-margin-top:14px}
     .updated{font-size:11px;color:#9abfc0;position:relative;margin-top:8px}.mutedBtn{border:0;background:transparent;color:#a9cccb;text-decoration:underline;font-size:11px;padding:0 2px;margin-left:4px}
     @media(min-width:620px){main{padding-left:24px;padding-right:24px}.masthead{padding:34px 30px}.maptile img{height:230px}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
   </style>
@@ -71,6 +82,12 @@
     <p>버튼이 동작하지 않으면 카카오톡 화면의 <strong>⋯ → 다른 브라우저에서 열기</strong>를 이용하거나, 주소를 복사해 브라우저에 붙여넣으세요.</p>
   </div>
   <main>
+    <section class="section" id="teamSection" aria-label="팀 편성 및 활동비">
+      <div class="section-heading"><div><div class="eyebrow">TEAM · 4개 팀</div><h2>내 팀 확인</h2></div><span class="hint">코스는 15:20 전망대에서 추첨</span></div>
+      <div class="teamOptions" id="teamButtons" role="group" aria-label="미션팀 선택"></div>
+      <div id="teamSummary" aria-live="polite"></div>
+      <details class="compactDetails"><summary>4개 팀 전체 명단 보기</summary><div id="allTeams"></div></details>
+    </section>
     <section class="section" id="todaySection" aria-label="집결 장소와 시간">
       <div class="navarrival"><strong><span id="parkingInlineTime">14:40</span> · 국립인천해양박물관 주차</strong><p id="parkingPlace"></p><button class="maplink" data-place="parking" type="button">박물관 지도앱 선택 · 주차장 진입로 확인 ↗</button></div>
       <details class="quickstops" id="earlyStops" open><summary>공통 집결지 · 14:50 매점 / 15:20 전망대 (눌러서 접기)</summary>
@@ -112,7 +129,7 @@
     <p class="footnote" id="footerText">월미도 모바일 미션 안내 · 공개용</p>
   </main>
 </div>
-<nav class="bottomnav" aria-label="화면 메뉴"><a href="#todaySection">집결지</a><a href="#commonSection">공통 3개</a><a href="#missionSection" id="bottomMissionLink">코스 미션</a><a href="#maps">참고 지도</a></nav>
+<nav class="bottomnav" aria-label="화면 메뉴"><a href="#teamSection">내 팀</a><a href="#todaySection">집결지</a><a href="#missionSection" id="bottomMissionLink">미션</a><a href="#maps">지도</a></nav>
 <div class="toaster" id="toast" role="status" aria-live="polite"></div>
 <dialog class="chooser" id="mapChooser" aria-label="지도앱 선택"><h2 id="mapChoiceTitle">목적지</h2><p id="mapChoiceDescription">사용하실 지도앱을 선택하세요.</p>
   <button type="button" data-provider="kakao">카카오맵 앱 열기</button>
