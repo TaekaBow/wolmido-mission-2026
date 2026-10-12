@@ -72,7 +72,7 @@
   </div>
   <main>
     <section class="section" id="todaySection" aria-label="집결 장소와 시간">
-      <div class="navarrival"><strong><span id="parkingInlineTime">14:40</span> · 국립인천해양박물관 주차</strong><p id="parkingPlace"></p><button class="maplink" data-place="parking" type="button">내비게이션 지도앱 선택 ↗</button></div>
+      <div class="navarrival"><strong><span id="parkingInlineTime">14:40</span> · 국립인천해양박물관 주차</strong><p id="parkingPlace"></p><button class="maplink" data-place="parking" type="button">박물관 지도앱 선택 · 주차장 진입로 확인 ↗</button></div>
       <details class="quickstops" id="earlyStops" open><summary>공통 집결지 · 14:50 매점 / 15:20 전망대 (눌러서 접기)</summary>
         <div class="location"><div><strong><span id="meetingInlineTime">14:50</span> · 석양마루매점 앞</strong><p id="meetingPlace"></p><button class="maplink" data-place="store" type="button">매점 지도앱 선택 ↗</button></div></div>
         <div class="location"><div><strong><span id="viewpointInlineTime">15:20</span> · 월미공원전망대</strong><p id="viewpointPlace"></p><button class="maplink" data-place="viewpoint" type="button">전망대 지도앱 선택 ↗</button></div></div>
@@ -156,7 +156,7 @@ function urlsForPlace(p){
 function openPlaceChooser(key){
  const place=(cfg&&cfg.places||{})[key];if(!place){notice('해당 장소의 지도 정보를 찾지 못했습니다.');return;}
  activePlaceKey=key;currentMapLinks=urlsForPlace(place);text('mapChoiceTitle',place.name);
- text('mapChoiceDescription',isMappedCoordinate(place)?'위도 '+place.lat+' / 경도 '+place.lng+' · 지도앱을 선택하세요.':'정확한 좌표가 확인되지 않은 장소입니다. 카카오 장소정보 또는 네이버 검색으로 연결합니다.');
+ text('mapChoiceDescription',place.googleLinkStatus==='mismatch_search_fallback'?'매점으로 받은 구글지도 링크가 다른 장소(월미테마파크)를 가리켜, 정확한 매점 좌표 대신 장소명 검색으로 연결합니다.':(isMappedCoordinate(place)?'구글지도 장소좌표 '+place.lat+', '+place.lng+' · '+(place.locationNote||'원하는 지도앱을 선택하세요.'):'좌표 확인 전입니다. 장소 검색 또는 카카오 장소정보로 연결합니다.'));
  $('kakaoWebFallback').href=currentMapLinks.kakaoWeb;$('naverWebFallback').href=currentMapLinks.naverWeb;
  try{$('mapChooser').showModal();}catch{window.open(currentMapLinks.kakaoWeb,'_blank','noopener');}
 }
