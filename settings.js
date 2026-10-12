@@ -376,8 +376,9 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "17811732",
       "kakaoUrl": "https://place.map.kakao.com/17811732",
-      "source": "카카오맵 장소 ID",
-      "travelMode": "walk"
+      "source": "카카오맵 장소 ID + 사용자가 제공한 Google 지도 링크 · 좌표 확인 대기",
+      "travelMode": "walk",
+      "googleUrl": "https://maps.app.goo.gl/U9iyfLQNsDVURPCC9"
     },
     "route1": {
       "name": "월미전통정원",
@@ -421,8 +422,9 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "592954764",
       "kakaoUrl": "https://place.map.kakao.com/592954764",
-      "source": "카카오맵 장소 ID",
-      "travelMode": "walk"
+      "source": "카카오맵 장소 ID · 사용자 제공 Plus Code는 핀 위치 검증 대기",
+      "travelMode": "walk",
+      "unverifiedPlusCode": "FHCW+P7 서구 인천광역시"
     },
     "dinner": {
       "name": "달빛조개",
