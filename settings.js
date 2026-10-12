@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
   "version": "2.3",
-  "updatedAt": "2026-10-12 10:45",
+  "updatedAt": "2026-10-12 10:50",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -10,7 +10,7 @@ window.WOLMI_CONFIG = {
     "meetingPlace": "석양마루매점 앞 (월미로 329)",
     "checkpointLabel": "학무대 집결",
     "checkpointTime": "16:30",
-    "checkpointPlace": "학무대",
+    "checkpointPlace": "월미도학공연장(학무대)",
     "dinnerLabel": "전원 착석",
     "dinnerTime": "17:30",
     "dinnerPlace": "달빛조개 · 인천 제물포구 월미문화로 65",
@@ -437,14 +437,15 @@ window.WOLMI_CONFIG = {
       "googleUrl": "https://maps.app.goo.gl/F8fSkXgP1K4T2AzC6?g_st=ac"
     },
     "checkpoint": {
-      "name": "학무대",
+      "name": "월미도학공연장(학무대)",
       "lat": null,
       "lng": null,
       "kakaoPlaceId": "592954764",
       "kakaoUrl": "https://place.map.kakao.com/592954764",
-      "source": "카카오맵 장소 ID · 사용자 제공 Plus Code는 핀 위치 검증 대기",
+      "source": "사용자가 지정한 월미도학공연장 구글지도 링크 · 좌표 미추출",
       "travelMode": "walk",
-      "unverifiedPlusCode": "FHCW+P7 서구 인천광역시"
+      "unverifiedPlusCode": "FHCW+P7 서구 인천광역시",
+      "googleUrl": "https://maps.app.goo.gl/swba78p5eb1oGTQ79?g_st=ac"
     },
     "dinner": {
       "name": "달빛조개",
