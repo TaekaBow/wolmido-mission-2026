@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
   "version": "2.5",
-  "updatedAt": "2026. 10. 12. 11:15",
+  "updatedAt": "2026. 10. 12. 11:18",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -43,8 +43,8 @@ window.WOLMI_CONFIG = {
       "3": "16:30",
       "4": "16:30"
     },
-    "groupChatUrl": "",
-    "groupChatNotice": "전체 공지용 카카오톡 채팅방은 발송된 최종 안내 메일의 초대 링크로 입장해 주세요. 현장 집결 및 변경사항은 해당 채팅방에서 안내합니다.",
+    "groupChatUrl": "https://invite.kakao.com/tc/9qbVjML6zm",
+    "groupChatNotice": "전체 공지용 카카오톡 채팅방에 입장해 주세요. 집결 변경·코스별 안내·인증 제출은 공지방에서 확인합니다.",
     "activityBudgetPerTeam": 100000,
     "activityBudgetRule": "팀별 10만 원 한도 내 간식·음료 등 자유롭게 사용하세요. 결제 영수증은 반드시 챙겨 주세요.",
     "teamLeaderRule": "차량 이동 중 팀장을 상의하고, 서로 다른 차에 탄 팀원은 카카오톡으로 의견을 모아 14:50 석양마루매점 집결 시 확정합니다. 운전자는 운전에 집중해 주세요.",
