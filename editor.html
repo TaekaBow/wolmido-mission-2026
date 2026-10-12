@@ -25,7 +25,7 @@
 </section>
 <section class="card"><h2>1. 행사 기본 정보</h2><div class="fields" id="basicFields"></div></section>
 <section class="card"><h2>2. 시간 · 장소 · 공지</h2><p>공통 시각과 코스별 학무대 집결 시각을 따로 관리합니다.</p><div class="fields" id="timeFields"></div></section>
-<section class="card"><h2>3. 최종 팀 편성 · 활동비</h2><p>팀원 5명, 법인카드 담당, 후발 합류자를 수정할 수 있습니다. 배차표와 카카오톡 초대 링크는 이 설정에 포함하지 않습니다.</p><div class="fields" id="teamBudgetField"></div><div id="teamEditors"></div></section>
+<section class="card"><h2>3. 최종 팀 편성 · 활동비</h2><p>팀원 5명, 확정 팀장·코스, 법인카드 담당, 후발 합류자를 수정할 수 있습니다. 배차표와 카카오톡 초대 링크는 이 설정에 포함하지 않습니다.</p><div class="fields" id="teamBudgetField"></div><div id="teamEditors"></div></section>
 <section class="card"><h2>4. 미션 선택 기준</h2><div class="two" id="missionSettings"></div><p>필수 개수를 바꾸면 사이트의 선택 버튼·진행률·공유 문구에 즉시 적용됩니다. <strong>실무 운영시트의 미션 배점도 함께 확인</strong>하세요.</p></section>
 <section class="card"><h2>5. 공통 미션 3개 수정</h2><p>네 코스 어디서든 수행하는 팀 기록 미션입니다. 제목·촬영 형식·성공 조건·대체 방법을 수정할 수 있습니다.</p><div id="commonMissionEditors"></div></section>
 <section class="card"><h2>6. 코스별 미션 수정</h2><p>각 코스마다 길에서 만나는 명소 4개와 찾아보는 명소 3개가 준비되어 있습니다. 미션 제목, 장소, 설명과 유의사항을 자유롭게 수정할 수 있습니다.</p><div class="tabs" id="routeTabs"></div><div id="routeInfo"></div><div id="missionEditors"></div></section>
@@ -93,7 +93,9 @@ function makeTeams(){
  $('teamBudgetField').innerHTML=field('팀별 활동비 (원)','event.activityBudgetPerTeam',draft.event.activityBudgetPerTeam,{type:'number',min:0,step:1000});
  $('teamEditors').innerHTML=Object.entries(all).map(([k,t])=>'<section class="mission"><h3>'+escapeHtml(k)+'팀</h3><div class="fields">'+
  '<label class="field wide"><span>팀원 5명 (쉼표 또는 줄바꿈으로 구분)</span><textarea rows="3" data-team-members="'+escapeHtml(k)+'">'+escapeHtml(t.members.join('\n'))+'</textarea></label>'+
- field('법인카드 담당','teams.'+k+'.cardHolder',t.cardHolder||'')+
+ field('확정 팀장','teams.'+k+'.leader',t.leader||'')+
+  '<label class="field"><span>확정 코스</span><select data-bind="teams.'+escapeHtml(k)+'.assignedCourse">'+Object.entries(draft.routes).map(([n,r])=>'<option value="'+escapeHtml(n)+'"'+(String(t.assignedCourse)===n?' selected':'')+'>'+escapeHtml(n+'코스 · '+r.name)+'</option>').join('')+'</select></label>'+
+  field('법인카드 담당','teams.'+k+'.cardHolder',t.cardHolder||'')+
  '<label class="field"><span>후발 합류자 (없으면 비움)</span><input data-team-late="'+escapeHtml(k)+'" value="'+escapeHtml((t.lateArrivals||[]).join(', '))+'"></label></div></section>').join('');
 }
 function makeCommon(){
@@ -132,14 +134,17 @@ function validate(){const c=draft;const limits=Object.values(c.routes).map(r=>r.
  for(const [key,p] of Object.entries(c.places||{})){if(!p.name.trim())return key+' 장소명을 입력해 주세요.';if((p.lat===null)!==(p.lng===null))return key+' 좌표는 위도와 경도를 함께 입력하거나 둘 다 비워두세요.';if(p.lat!==null&&(!Number.isFinite(p.lat)||!Number.isFinite(p.lng)||p.lat<33||p.lat>39||p.lng<124||p.lng>132))return key+' 좌표가 국내 범위를 벗어납니다.';}
  if(!c.event.title.trim()||!c.event.checkpointPlace.trim())return '제목과 중간 집결 장소는 비울 수 없습니다.';
  if(!c.teams||Object.keys(c.teams).join(',')!=='A,B,C,D')return 'A~D 네 팀의 편성 자료가 필요합니다.';
- const roster=[];
+ const roster=[],courseAssignments=[];
  for(const [k,t] of Object.entries(c.teams)){
   if(!Array.isArray(t.members)||t.members.length!==5||!t.members.every(x=>typeof x==='string'&&x.trim()))return k+'팀은 이름 5명이 필요합니다.';
+  if(!t.leader||!t.members.includes(t.leader.trim()))return k+'팀장은 해당 팀 명단에서 선택해 주세요.';
+  if(!c.routes[String(t.assignedCourse)])return k+'팀의 확정 코스를 선택해 주세요.';
   if(!t.cardHolder||!t.cardHolder.trim())return k+'팀 법인카드 담당자를 입력해 주세요.';
   if(!Array.isArray(t.lateArrivals)||t.lateArrivals.some(n=>!t.members.includes(n)))return k+'팀 후발 합류자는 해당 팀원이어야 합니다.';
-  roster.push(...t.members);
+  roster.push(...t.members);courseAssignments.push(String(t.assignedCourse));
  }
  if(new Set(roster).size!==20)return '팀원 20명에 중복 이름이 있는지 확인해 주세요.';
+ if(new Set(courseAssignments).size!==4)return '네 팀은 서로 다른 코스에 배정되어야 합니다.';
  if(!Number.isInteger(c.event.activityBudgetPerTeam)||c.event.activityBudgetPerTeam<0)return '팀별 활동비는 0원 이상의 정수여야 합니다.';
  if(!Array.isArray(c.commonMissions)||c.commonMissions.length!==3)return '공통 미션은 3개여야 합니다.';
  for(const m of c.commonMissions){if(!m.title.trim()||!m.description.trim()||!m.format.trim())return '공통 미션 제목·형식·성공 조건을 입력해 주세요.';}
