@@ -354,21 +354,29 @@ window.WOLMI_CONFIG = {
   "places": {
     "parking": {
       "name": "국립인천해양박물관 주차장",
-      "lat": 37.47012,
-      "lng": 126.59694,
+      "lat": null,
+      "lng": null,
       "kakaoPlaceId": "",
       "kakaoUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20294",
-      "source": "주차장 중심부 참고 좌표",
-      "travelMode": "car"
+      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "travelMode": "car",
+      "provisionalCoordinates": [
+        37.47012,
+        126.59694
+      ]
     },
     "store": {
       "name": "석양마루매점",
-      "lat": 37.4701481430491,
-      "lng": 126.60027502583,
+      "lat": null,
+      "lng": null,
       "kakaoPlaceId": "",
       "kakaoUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
-      "source": "매점 등록 위치",
-      "travelMode": "walk"
+      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "travelMode": "walk",
+      "provisionalCoordinates": [
+        37.4701481430491,
+        126.60027502583
+      ]
     },
     "viewpoint": {
       "name": "월미공원전망대",
@@ -400,21 +408,29 @@ window.WOLMI_CONFIG = {
     },
     "route3": {
       "name": "월미도선착장",
-      "lat": 37.47561,
-      "lng": 126.59747,
+      "lat": null,
+      "lng": null,
       "kakaoPlaceId": "17805923",
       "kakaoUrl": "https://place.map.kakao.com/17805923",
-      "source": "선착장 중심부 참고 좌표",
-      "travelMode": "walk"
+      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "travelMode": "walk",
+      "provisionalCoordinates": [
+        37.47561,
+        126.59747
+      ]
     },
     "route4": {
       "name": "월미도등대길",
-      "lat": 37.46892,
-      "lng": 126.59489,
+      "lat": null,
+      "lng": null,
       "kakaoPlaceId": "1550030810",
       "kakaoUrl": "https://place.map.kakao.com/1550030810",
-      "source": "등대 인근 참고 좌표 · 통행 가능한 탐방로 우선",
-      "travelMode": "walk"
+      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "travelMode": "walk",
+      "provisionalCoordinates": [
+        37.46892,
+        126.59489
+      ]
     },
     "checkpoint": {
       "name": "학무대",
