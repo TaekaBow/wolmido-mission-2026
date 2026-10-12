@@ -1,6 +1,6 @@
 window.WOLMI_CONFIG = {
   "version": "2.3",
-  "updatedAt": "2026-10-12 10:20",
+  "updatedAt": "2026-10-12 10:45",
   "event": {
     "title": "월요일에 우리, 월미도!",
     "dateLabel": "2026. 10. 12. 월요일",
@@ -358,12 +358,13 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "",
       "kakaoUrl": "https://map.kakao.com/link/search/%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20294",
-      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "source": "사용자가 지정한 구글지도 장소 링크 · 좌표 미추출",
       "travelMode": "car",
       "provisionalCoordinates": [
         37.47012,
         126.59694
-      ]
+      ],
+      "googleUrl": "https://maps.app.goo.gl/Zbm7DuuZ9Ys61cDM9?g_st=ac"
     },
     "store": {
       "name": "석양마루매점",
@@ -371,12 +372,13 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "",
       "kakaoUrl": "https://map.kakao.com/link/search/%EC%84%9D%EC%96%91%EB%A7%88%EB%A3%A8%EB%A7%A4%EC%A0%90%20%EC%9D%B8%EC%B2%9C%20%EC%A0%9C%EB%AC%BC%ED%8F%AC%EA%B5%AC%20%EC%9B%94%EB%AF%B8%EB%A1%9C%20329",
-      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "source": "사용자가 지정한 구글지도 장소 · 버스정류장 옆 석양마루매점 · 좌표 미추출",
       "travelMode": "walk",
       "provisionalCoordinates": [
         37.4701481430491,
         126.60027502583
-      ]
+      ],
+      "googleUrl": "https://maps.app.goo.gl/dgadmhchu4jBMopc6?g_st=ac"
     },
     "viewpoint": {
       "name": "월미공원전망대",
@@ -412,25 +414,27 @@ window.WOLMI_CONFIG = {
       "lng": null,
       "kakaoPlaceId": "17805923",
       "kakaoUrl": "https://place.map.kakao.com/17805923",
-      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "source": "사용자가 지정한 구글지도 장소 링크 · 좌표 미추출",
       "travelMode": "walk",
       "provisionalCoordinates": [
         37.47561,
         126.59747
-      ]
+      ],
+      "googleUrl": "https://maps.app.goo.gl/zE4aRNxDr55td7tM8?g_st=ac"
     },
     "route4": {
-      "name": "월미도등대길",
+      "name": "월미도등대",
       "lat": null,
       "lng": null,
       "kakaoPlaceId": "1550030810",
       "kakaoUrl": "https://place.map.kakao.com/1550030810",
-      "source": "좌표 검증 대기 · 지도앱은 장소 링크/검색 사용",
+      "source": "사용자가 지정한 구글지도 장소 링크 · 좌표 미추출",
       "travelMode": "walk",
       "provisionalCoordinates": [
         37.46892,
         126.59489
-      ]
+      ],
+      "googleUrl": "https://maps.app.goo.gl/F8fSkXgP1K4T2AzC6?g_st=ac"
     },
     "checkpoint": {
       "name": "학무대",
