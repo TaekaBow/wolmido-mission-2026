@@ -1,61 +1,127 @@
 {
-  "generated": "2026-10-12T01:30:55.362920+00:00",
+  "generated": "2026-10-12T01:31:51.867514+00:00",
   "source": "Google Maps shortlink redirects (GitHub Actions)",
   "results": {
     "parking": {
       "short_url": "https://maps.app.goo.gl/Zbm7DuuZ9Ys61cDM9?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%9C+294+%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80/data=!4m2!3m1!1s0x357b8332e344675d:0x7022a671648c1f5e!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACDIvAcqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=5fb63fca-b029-4acb-bad2-6656c8040bce&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%"
+      "response_chars": 194404,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%9C+294+%EA%B5%AD%EB%A6%BD%EC%9D%B8%EC%B2%9C%ED%95%B4%EC%96%91%EB%B0%95%EB%AC%BC%EA%B4%80&amp;pb=%211m15%211s0x357b8332e344675d%3A0x7022a671648c1f5e%212z7J247LKc6rSR7Jet7IucIOykkeq1rCDsm5Trr7jroZwgMjk0"
     },
     "store": {
       "short_url": "https://maps.app.goo.gl/dgadmhchu4jBMopc6?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9B%94%EB%AF%B8%ED%85%8C%EB%A7%88%ED%8C%8C%ED%81%AC/data=!4m2!3m1!1s0x357b82885cbb76ef:0x994e095aa51193cc!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACCf2AsqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=37223c21-810e-4785-8f64-927ca7a27996&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9B%94%EB%AF%B8%ED%85%8C%EB%A7%88%ED%8C%8C%ED%81%AC&amp;pb=%211m15%211s0x357b82885cbb76"
+      "response_chars": 194317,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9B%94%EB%AF%B8%ED%85%8C%EB%A7%88%ED%8C%8C%ED%81%AC&amp;pb=%211m15%211s0x357b82885cbb76ef%3A0x994e095aa51193cc%212z7JuU66-47YWM66eI7YyM7YGs%213m12%211m3%211d3077588.5904436116%212d-104.80844799999998%213d41.124533400000004%212m3%211f0.0%212f0.0%213f0.0%213m2%211i1024%212i768%214f13.1%21"
     },
     "viewpoint": {
       "short_url": "https://maps.app.goo.gl/U9iyfLQNsDVURPCC9",
       "resolved_url": "https://www.google.com/maps/place/%EC%9B%94%EB%AF%B8+%EC%A0%84%EB%A7%9D%EB%8C%80/data=!3m1!4b1!4m4!3m3!1s0x357b827e0fef337f:0xeac2d771252f15d1!16s%2Fg%2F1tpln77r!20s8Q98FJ94%2BR4J?entry=tts&g_ep=EgoyMDI2MTAwNy4wIPu8ASoASAFQAw%3D%3D&skid=2da50b1d-ac98-4533-ab97-dd390f9d508a",
       "http": "ok",
       "place_pin_lat": 37.4695875,
-      "place_pin_lng": 126.605265625
+      "place_pin_lng": 126.605265625,
+      "response_chars": 193832,
+      "place_pin_candidates": [
+        {
+          "lat": 37.4695875,
+          "lng": 126.605265625,
+          "at": 575,
+          "context": "799999998!3d41.124533400000004!2m3!1f0.0!2f0.0!3f0.0!3m2!1i1024!2i768!4f13.1!4m2!3d37.4695875!4d126.605265625!15m2!1m1!4s/g/1tpln77r!12m4!2m3!1i360!2i120!4i8!13m57!2m2!1i203!"
+        }
+      ],
+      "numeric_pair_candidates": [
+        {
+          "lat": 37.4695875,
+          "lng": 126.605265625,
+          "at": 94599,
+          "context": "116,-104.80844799999998,41.124533400000004],[0,0,0],[1024,768],13.1],[null,null,37.4695875,126.605265625],null,null,null,null,null,null,null,null,null,null,[[null,null,null,\\\"/g/1tpln7"
+        },
+        {
+          "lat": 37.4695875,
+          "lng": 126.605265625,
+          "at": 96654,
+          "context": "7b827e0fef337f:0xeac2d771252f15d1\",\"월미 전망대\",null,null,null,null,null,[null,null,37.4695875,126.605265625],null,null,null,null,null,null,null,\"/g/1tpln77r\"]]],null,null,[59,63,60,67,68,"
+        }
+      ],
+      "place_pin_total": 1,
+      "numeric_pair_total": 2,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9B%94%EB%AF%B8+%EC%A0%84%EB%A7%9D%EB%8C%80&amp;pb=%211m21%211s0x357b827e0fef337f%3A0xeac2d771252f15d1%212z7JuU66-4IOyghOunneuMgA%213m12%211m3%211d3077588.5904436116%212d-104.80844799999998%213d41.124533400000004%212m3%211f0.0%212f0.0%213f0.0%213m2%211i1024%212i768%214f13.1%214m2%213d37"
     },
     "route1": {
       "short_url": "https://maps.app.goo.gl/hQem6DBBXcnGCcZn8?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%9C+131-31+(%EB%B6%81%EC%84%B1%EB%8F%991%EA%B0%80)+%EC%9B%94%EB%AF%B8%EC%A0%84%ED%86%B5%EA%B3%B5%EC%9B%90/data=!4m2!3m1!1s0x357b8279537143b9:0xd77fd250484cec05!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACDXggMqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=57fe133c-a41b-486c-b0bd-eebd6be434b0&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%"
+      "response_chars": 198909,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%9C+131-31+%28%EB%B6%81%EC%84%B1%EB%8F%991%EA%B0%80%29+%EC%9B%94%EB%AF%B8%EC%A0%84%ED%86%B5%EA%B3%B5%EC%9B%90&amp;pb=%211m15%211s0x357b8279537143b9%3A0xd77fd250484cec05%212z7J247LKc6rSR7Jet7IucIOykkeq1"
     },
     "route2": {
       "short_url": "https://maps.app.goo.gl/gRgiWxzMZhAR4hx46?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%9C+419+%EC%9B%94%EB%AF%B8%EC%82%B0+%EC%A0%95%EC%83%81/data=!4m2!3m1!1s0x357b83d47bb7e63f:0x49e81fe8a1e507b2!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACCIJyq9ASw5NDI2NzcyNyw5NDI5MjE5NSw5NDI5OTUzMiwxMDA3OTY0OTgsMTAwNzk3NzYxLDEwMDc5NjUzNSw5NDI4MDU3Niw5NDIwNzM5NCw5NDIwNzUwNiw5NDIwODUwNiw5NDIxODY1Myw5NDIyOTgzOSw5NDI3NTE2OCw5NDI3OTYxOSwxMDA4MzU3MDQsMTAwODIwMjM3LDEwMDgyMjQ5NCwxMDA4Mjc5NzUsMTAwODM4MzU5LDEyMTgxNjQ2MUICS1I%3D&skid=aec24f80-a700-43b9-8df9-8694b9ae7e52&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%"
+      "response_chars": 194338,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%A1%9C+419+%EC%9B%94%EB%AF%B8%EC%82%B0+%EC%A0%95%EC%83%81&amp;pb=%211m15%211s0x357b83d47bb7e63f%3A0x49e81fe8a1e507b2%212z7J247LKc6rSR7Jet7IucIOykkeq1rCDsm5Trr7jroZwgNDE5IOyblOuvuOyCsCDsoJXsg4E%213m12%211m"
     },
     "route3": {
       "short_url": "https://maps.app.goo.gl/zE4aRNxDr55td7tM8?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+98-6+%EC%9B%94%EB%AF%B8%EB%8F%84+%EC%97%AC%EA%B0%9D%EC%84%A0+%EC%84%A0%EC%B0%A9%EC%9E%A5(%EC%98%81%EC%A2%85%EB%8F%84%ED%96%89)/data=!4m2!3m1!1s0x357b83004f49297d:0xc6fb5b1ac39a00d7!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACDXggMqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=fee08026-bea4-4a9c-a566-5dc855ad91df&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+98-6+%EC%9B%94%EB%AF%B8%E"
+      "response_chars": 194199,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+98-6+%EC%9B%94%EB%AF%B8%EB%8F%84+%EC%97%AC%EA%B0%9D%EC%84%A0+%EC%84%A0%EC%B0%A9%EC%9E%A5%28%EC%98%81%EC%A2%85%EB%8F%84%ED%96%89%29&amp;pb=%211m15%211s0x357b83004f49297d%3A0xc6fb5b1ac39a00d7%212z7J247LKc6rSR7Jet7IucIOykkeq1rCA"
     },
     "route4": {
       "short_url": "https://maps.app.goo.gl/F8fSkXgP1K4T2AzC6?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EB%B6%81%EC%84%B1%EB%8F%99+%EC%9B%94%EB%AF%B8%EB%8F%84+%EB%93%B1%EB%8C%80/data=!4m2!3m1!1s0x357b8289230592b3:0x2cc752bca4333d40!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACDXggMqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=f88c942f-a970-4be5-9a77-66b6aab4cf13&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EB%B6%81%EC%84%B1%EB%8F%"
+      "response_chars": 198387,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EB%B6%81%EC%84%B1%EB%8F%99+%EC%9B%94%EB%AF%B8%EB%8F%84+%EB%93%B1%EB%8C%80&amp;pb=%211m15%211s0x357b8289230592b3%3A0x2cc752bca4333d40%212z7J247LKc6rSR7Jet7IucIOykkeq1rCDrtoHshLHrj5kg7JuU66-464-EIOuTseuMgA%213m12%211m3%211d307"
     },
     "checkpoint": {
       "short_url": "https://maps.app.goo.gl/swba78p5eb1oGTQ79?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%9B%94%EB%AF%B8%EB%8F%84+%EB%AC%B8%ED%99%94%EC%9D%98+%EA%B1%B0%EB%A6%AC+%EC%95%BC%EC%99%B8%EA%B3%B5%EC%97%B0%EC%9E%A5(%ED%95%99%EA%B3%B5%EC%97%B0%EC%9E%A5)/data=!4m2!3m1!1s0x357b83bb0a238715:0x32045337bbdf3798!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACDXggMqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=6ecf9640-a26c-415e-a26d-3d9f7bfa8de7&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%9B%94%EB%AF%B8%EB%8F%84+%EB%AC%B8%ED%99%"
+      "response_chars": 195559,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%9B%94%EB%AF%B8%EB%8F%84+%EB%AC%B8%ED%99%94%EC%9D%98+%EA%B1%B0%EB%A6%AC+%EC%95%BC%EC%99%B8%EA%B3%B5%EC%97%B0%EC%9E%A5%28%ED%95%99%EA%B3%B5%EC%97%B0%EC%9E%A5%29&amp;pb=%211m15%211s0x357b83bb0a238715%3A0x32045337bbdf3798%212z7J247LKc6rSR7Jet7I"
     },
     "dinner": {
       "short_url": "https://maps.app.goo.gl/D2s94YC2TCtEHQNK9?g_st=ac",
       "resolved_url": "https://www.google.com/maps/place/%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%AC%B8%ED%99%94%EB%A1%9C+65+%EB%8B%AC%EB%B9%9B%EC%A1%B0%EA%B0%9C/data=!4m2!3m1!1s0x357b82882f440725:0x850b686f97e5e356!18m1!1e1?utm_source=mstt_1&entry=gps&coh=192189&g_ep=CAESBzI2LjQwLjEYACDXggMqvQEsOTQyNjc3MjcsOTQyOTIxOTUsOTQyOTk1MzIsMTAwNzk2NDk4LDEwMDc5Nzc2MSwxMDA3OTY1MzUsOTQyODA1NzYsOTQyMDczOTQsOTQyMDc1MDYsOTQyMDg1MDYsOTQyMTg2NTMsOTQyMjk4MzksOTQyNzUxNjgsOTQyNzk2MTksMTAwODM1NzA0LDEwMDgyMDIzNywxMDA4MjI0OTQsMTAwODI3OTc1LDEwMDgzODM1OSwxMjE4MTY0NjFCAktS&skid=9d2d453e-1be7-4996-9b17-6bef56b68162&g_st=ac",
       "http": "ok",
-      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%AC%"
+      "response_chars": 193888,
+      "place_pin_candidates": [],
+      "numeric_pair_candidates": [],
+      "place_pin_total": 0,
+      "numeric_pair_total": 0,
+      "preview": "<!DOCTYPE html><html itemscope=\"\" itemtype=\"http://schema.org/Place\" lang=\"ko-US\"> <head> <link href=\"/maps/preview/place?authuser=0&amp;hl=ko&amp;gl=us&amp;q=%EC%9D%B8%EC%B2%9C%EA%B4%91%EC%97%AD%EC%8B%9C+%EC%A4%91%EA%B5%AC+%EC%9B%94%EB%AF%B8%EB%AC%B8%ED%99%94%EB%A1%9C+65+%EB%8B%AC%EB%B9%9B%EC%A1%B0%EA%B0%9C&amp;pb=%211m15%211s0x357b82882f440725%3A0x850b686f97e5e356%212z7J247LKc6rSR7Jet7IucIOykkeq1rCDsm5Trr7jrrLjtmZTroZwgNjUg64us67mb7KGw6rCc%213"
     }
   }
 }
