@@ -205,10 +205,42 @@ $('openChrome').addEventListener('click',()=>{
 });
 $('copyPageLink').addEventListener('click',()=>copy(location.href));
 
+let selectedTeam='';
+const TEAM_CHOICE_KEY='wolmido_20261012_selected_team_v25';
+function teamFromBrowser(){
+  const teams=cfg.teams||{},q=(new URLSearchParams(location.search).get('team')||'').toUpperCase();
+  let saved='';try{saved=String(localStorage.getItem(TEAM_CHOICE_KEY)||'').toUpperCase();}catch{}
+  return teams[q]?q:(teams[saved]?saved:'');
+}
+function chooseTeam(id){
+  if(!cfg.teams[id])return;selectedTeam=id;
+  try{localStorage.setItem(TEAM_CHOICE_KEY,id);}catch{}
+  renderTeams();
+}
+function renderTeams(){
+  const all=cfg.teams||{},keys=Object.keys(all),panel=$('teamSection');
+  if(!keys.length){panel.classList.add('hidden');return;}
+  panel.classList.remove('hidden');
+  $('teamButtons').innerHTML=keys.map(k=>'<button class="teamOption '+(selectedTeam===k?'active':'')+'" type="button" aria-pressed="'+(selectedTeam===k)+'" data-team="'+html(k)+'">'+html(k)+'팀</button>').join('');
+  $('teamButtons').querySelectorAll('[data-team]').forEach(btn=>btn.addEventListener('click',()=>chooseTeam(btn.dataset.team)));
+  const allowance=(Number(cfg.event.activityBudgetPerTeam)||0).toLocaleString('ko-KR');
+  const info=all[selectedTeam],budget='<div class="teamBudget"><strong>활동비 '+html(allowance)+'원</strong> · 팀별 자유 사용<br>결제 영수증은 반드시 보관해 주세요.</div>';
+  if(!info){
+    $('teamSummary').innerHTML='<div class="teamBrief"><h3>참가 팀을 선택하세요</h3><p>내 팀원과 법인카드 담당을 바로 확인할 수 있습니다. 탐방 코스는 별도로 추첨합니다.</p>'+budget+'</div>';
+  }else{
+    const late=Array.isArray(info.lateArrivals)?info.lateArrivals:[],members=(info.members||[]).map(name=>html(name)+(late.includes(name)?' (후발)':'')).join(' · ');
+    const lateNote=late.length?'<p><strong>후발 합류:</strong> '+late.map(html).join(' · ')+'</p>':'';
+    $('teamSummary').innerHTML='<div class="teamBrief"><h3>'+html(selectedTeam)+'팀 · '+info.members.length+'명</h3><p><strong>팀원</strong><br>'+members+'</p><p><strong>법인카드:</strong> '+html(info.cardHolder||'현장 확인')+'</p>'+lateNote+budget+'<p style="color:#4e676c;margin-top:10px">'+html(cfg.event.teamLeaderRule||'팀장은 현장에서 정합니다.')+'</p></div>';
+  }
+  $('allTeams').innerHTML=keys.map(k=>{const x=all[k],late=x.lateArrivals||[];
+    return '<div class="compactLine"><strong>'+html(k)+'팀 · '+x.members.length+'명</strong><span>'+x.members.map(name=>html(name)+(late.includes(name)?' (후발)':'')).join(' · ')+'</span><div>법인카드: '+html(x.cardHolder||'확인 필요')+'</div></div>';
+  }).join('');
+}
 function start(){
   const c=window.WOLMI_CONFIG;if(!c||!c.event||!c.routes||!Object.keys(c.routes).length){notice('행사 설정을 읽을 수 없습니다.');return;}
   cfg=c;const e=c.event;document.title=(e.title||'월미도 미션지')+' · 모바일 미션지';
   initBrowserOpening();
+  selectedTeam=teamFromBrowser();renderTeams();
   text('kicker','WOLMIDO MISSION TOUR / '+(e.dateLabel||''));text('eventTitle',e.title);text('eventSubtitle',e.subtitle);
   ['parking','meeting','viewpoint'].forEach(n=>{text(n+'Label',e[n+'Label']);text(n+'Time',e[n+'Time']);});
   text('lastUpdated',c.updatedAt?'· 안내 갱신 '+c.updatedAt:'');
